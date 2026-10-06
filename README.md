@@ -1,36 +1,211 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BaruLagi - Certified Refurbished Marketplace
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+![BaruLagi Logo](/public/logo.svg)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Platform E-Commerce Gawai & Gadget Rekondisi Bersertifikasi Resmi Indonesia**
+
+*Menghadirkan standar baru belanja perangkat teknologi second-hand berkualitas dengan estetika Cinematic Dark Luxury, transparansi kondisi unit, dan garansi penuh 1 tahun.*
+
+[![Next.js 16](https://img.shields.io/badge/Next.js-16.3.8-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React 19](https://img.shields.io/badge/React-19.2.8-blue?style=for-the-badge&logo=react)](https://react.dev/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-CSS_v4-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
+[![Prisma ORM](https://img.shields.io/badge/Prisma-5.22.0-2D3748?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
+**Author & Project Owner:** [Nur Hidayat Surya Pamungkas](https://github.com)
+
+</div>
+
+---
+
+## 🌟 Tentang BaruLagi
+
+**BaruLagi** adalah platform pasar elektronik rekondisi (*certified refurbished marketplace*) modern di Indonesia yang mengusung konsep ekonomi sirkular ramah lingkungan (*sustainable tech*). Setiap perangkat gawai—mulai dari Apple MacBook, iPhone, iPad, konsol game, hingga perlengkapan audio—melewati standardisasi inspeksi teknis 25 titik untuk memastikan performa 100% optimal dengan harga hingga 70% lebih terjangkau dibanding produk baru.
+
+Website ini dirancang secara eksklusif dengan bahasa desain **Cinematic Dark Luxury**: perpaduan palet *pure obsidian black* (`#000000`), kontras monokrom bersih (`#FFFFFF`), aksen *electric lime* (`#D6F479`), tipografi terkurasi, serta animasi *smooth inertial scroll* menggunakan **Lenis** dan **Framer Motion**.
+
+---
+
+## ✨ Fitur Utama
+
+- **Estetika Cinematic Dark Luxury & Micro-Interactions**:
+  - Transisi visual halus, efek *spotlight cursor*, dan *backdrop-blur* premium.
+  - *Smooth momentum scrolling* ditenagai oleh Lenis Engine.
+  - Komponen Logo Interaktif: monogram geometris huruf **B** dengan busur regenerasi sirkular yang memiliki interaksi *click-to-scroll-to-top*.
+- **Katalog Produk Dinamis & Multi-Tier Grading**:
+  - Filter kategori instan (MacBooks, Smartphones, iPads, Audio, Consoles).
+  - Pilihan kondisi fisik transparan (*Fair*, *Good*, *Excellent*) dengan penyesuaian harga *real-time*.
+  - Rincian spesifikasi teknis lengkap, status kesehatan baterai (>85%), dan ulasan pembeli terverifikasi.
+- **Kalkulator Tukar Tambah (*Trade-In Engine*)**:
+  - Simulasi nilai taksir instan untuk menjual atau menukar gadget lama menjadi uang tunai/saldo belanja hanya dalam 4 langkah terpandu.
+- **Sistem Keranjang & Checkout Lengkap**:
+  - *Slide-over cart drawer* interaktif dengan estimasi pengiriman gratis berasuransi.
+  - Modal checkout terpadu dengan berbagai opsi pembayaran Indonesia (Transfer Bank Otomatis, QRIS Instant, Cicilan 0%).
+- **Garansi & Komitmen Terpercaya**:
+  - Garansi komersial hardware resmi 12 bulan tanpa biaya tersembunyi.
+  - Jaminan uji coba 30 hari bebas risiko (*100% money-back guarantee*).
+  - Standar pembersihan data militer (*100% sanitized data*).
+
+---
+
+## 🛠️ Tech Stack & Arsitektur
+
+| Lapisan | Teknologi | Deskripsi |
+| :--- | :--- | :--- |
+| **Framework** | Next.js 16.3.8 (App Router, Turbopack) | Server Components & Server Actions |
+| **Library UI** | React 19.2.8 | Komponen reaktif modern |
+| **Styling** | Tailwind CSS v4 & PostCSS | Desain responsif berbasis token tema modern |
+| **Motion** | Framer Motion & Lenis Scroll | Animasi mikro dan *smooth inertial scrolling* |
+| **Icons & UI** | Lucide React & Shadcn UI / Base UI | Ikonografi modern dan komponen aksesibel |
+| **Database & ORM** | SQLite & Prisma ORM 5.22.0 | Skema relasional untuk produk, varian inventaris, dan review |
+| **Bahasa** | TypeScript 5 | Tipisasi statis ketat di seluruh modul |
+
+---
+
+## 📁 Struktur Direktori
+
+```text
+hp-second-app/
+├── prisma/
+│   ├── schema.prisma       # Definisi skema relasional database Prisma
+│   └── seed.js             # Data seed gawai rekondisi bersertifikasi
+├── public/
+│   ├── logo.svg            # Asset logo vektor original BaruLagi
+│   ├── cinematic_macbook.jpg
+│   ├── cinematic_iphone.jpg
+│   └── ...                 # Asset visual perangkat
+├── src/
+│   ├── app/
+│   │   ├── actions.ts      # Server Actions (Trade-In, Voucher, Newsletter)
+│   │   ├── globals.css     # Styling global & token warna Tailwind v4
+│   │   ├── layout.tsx      # Root layout, font Inter, context providers & meta
+│   │   └── page.tsx        # Server Component utama (prefetch database)
+│   ├── components/
+│   │   ├── cart/           # Drawer keranjang belanja & modal checkout
+│   │   ├── cinematic/      # Header, Hero section, Footer, dan kartu gawai
+│   │   ├── home/           # Client wrapper interaktif dan section dinamis
+│   │   ├── modals/         # Modal bantuan, FAQ, akun, dan lokasi pengiriman
+│   │   ├── product/        # Modal detail spesifikasi dan varian gawai
+│   │   ├── providers/      # Lenis SmoothScrollProvider
+│   │   ├── tradein/        # Wizard interaktif kalkulator tukar tambah
+│   │   └── ui/             # Komponen UI inti & BaruLagiLogo
+│   ├── context/            # CartContext dan ModalContext
+│   └── lib/                # Prisma client singleton & utility helper
+├── .env.example            # Template variabel lingkungan
+├── .gitignore              # Konfigurasi pengabaian file Git
+├── LICENSE                 # Lisensi resmi MIT
+├── package.json            # Dependensi dan script project
+└── README.md               # Dokumentasi lengkap project
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Panduan Memulai (*Getting Started*)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Prasyarat Sistem
+- **Node.js**: Versi `18.18.0` atau yang lebih baru (disarankan Node.js 20+ LTS).
+- **npm**: Versi `9.x` atau yang lebih baru.
+- **Git** terpasang di sistem Anda.
 
-## Learn More
+### 2. Kloning Repositori
+```bash
+git clone https://github.com/USERNAME_ANDA/barulagi.git
+cd barulagi/hp-second-app
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Instalasi Dependensi
+```bash
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Konfigurasi Lingkungan (*Environment Variables*)
+Salin berkas contoh `.env.example` menjadi `.env`:
+```bash
+cp .env.example .env
+```
+*(Secara default, SQLite menggunakan `DATABASE_URL="file:./dev.db"` tanpa konfigurasi tambahan).*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 5. Inisialisasi Database & Seeding Data
+Jalankan migrasi skema dan masukkan data awal (*seed*):
+```bash
+# Sinkronkan skema Prisma dengan database SQLite lokal
+npm run db:push
 
-## Deploy on Vercel
+# Generate client Prisma
+npx prisma generate
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Masukkan data gawai awal (MacBook, iPhone, iPad, Audio, Konsol)
+npm run db:seed
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 6. Menjalankan Server Pengembangan (*Development*)
+```bash
+npm run dev
+```
+Buka peramban (*browser*) Anda di [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 📦 Build Produksi & Pengujian
+
+Untuk memverifikasi keutuhan aplikasi sebelum deploy ke server produksi:
+
+```bash
+# Build aplikasi produksi menggunakan Next.js Turbopack
+npm run build
+
+# Menjalankan server dalam mode produksi
+npm run start
+```
+
+---
+
+## 🚢 Panduan Deploy ke GitHub
+
+Ikuti langkah-langkah berikut untuk mengunggah project ini ke repositori GitHub pribadi Anda:
+
+1. **Buat Repositori Baru di GitHub**:
+   - Buka [github.com/new](https://github.com/new).
+   - Beri nama repositori, misalnya `barulagi` atau `barulagi-marketplace`.
+   - Pilih visibilitas (*Public* atau *Private*).
+   - Jangan centang *"Initialize with README"* (karena project ini sudah memiliki README lengkap).
+
+2. **Stage dan Commit Berkas di Komputer**:
+   ```bash
+   # Masuk ke direktori aplikasi
+   cd D:\hp-second\hp-second-app
+
+   # Tambahkan seluruh berkas ke staging area
+   git add .
+
+   # Buat commit perdana
+   git commit -m "feat: Initial release of BaruLagi Certified Refurbished Marketplace by Nur Hidayat Surya Pamungkas"
+   ```
+
+3. **Hubungkan dan Dorong (*Push*) ke GitHub**:
+   ```bash
+   # Atur branch utama ke main
+   git branch -M main
+
+   # Tambahkan remote repository Anda (ganti URL dengan URL repo Anda)
+   git remote add origin https://github.com/USERNAME_ANDA/barulagi.git
+
+   # Push ke GitHub
+   git push -u origin main
+   ```
+
+4. **Deploy ke Vercel (Opsional / Direkomendasikan)**:
+   - Hubungkan akun GitHub Anda ke [Vercel](https://vercel.com).
+   - Pilih repositori `barulagi`.
+   - Vercel akan otomatis mendeteksi konfigurasi Next.js dan menjalankan `npm run build` dengan sempurna.
+
+---
+
+## 📄 Lisensi & Hak Cipta
+
+Project ini dilisensikan di bawah lisensi resmi **MIT License**.  
+Lihat berkas [LICENSE](LICENSE) untuk informasi lebih lanjut.
+
+Copyright &copy; 2026 **Nur Hidayat Surya Pamungkas**. All rights reserved.

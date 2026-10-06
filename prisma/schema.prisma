@@ -1,0 +1,54 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  brand       String
+  category    String
+  basePrice   Float
+  images      String   // Storing JSON string for simplicity in SQLite
+  specs       String   // Storing JSON string for simplicity in SQLite
+  inventories Inventory[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Inventory {
+  id             String   @id @default(cuid())
+  productId      String
+  product        Product  @relation(fields: [productId], references: [id])
+  condition      String   // "Fair", "Good", "Excellent"
+  color          String?
+  storage        String?
+  price          Float
+  stockQuantity  Int      @default(0)
+  reviews        Review[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Review {
+  id          String    @id @default(cuid())
+  userId      String    // Placeholder for auth user ID
+  userName    String
+  inventoryId String
+  inventory   Inventory @relation(fields: [inventoryId], references: [id])
+  rating      Int       // 1-5
+  comment     String
+  date        DateTime  @default(now())
+}
+
+model TradeInQuote {
+  id                 String   @id @default(cuid())
+  deviceModel        String
+  declaredCondition  String
+  estimatedValue     Float
+  createdAt          DateTime @default(now())
+}
