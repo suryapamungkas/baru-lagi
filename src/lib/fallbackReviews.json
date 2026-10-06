@@ -1,0 +1,219 @@
+[
+  {
+    "id": "cmuwec11y000q3j1us4m0894z",
+    "userId": "usr_ps1",
+    "userName": "Carlos Mendes",
+    "inventoryId": "cmuwec11y000p3j1u3b1vtctk",
+    "rating": 5,
+    "comment": "Whisper quiet fan, flawless DualSense controller. Saved $100 off MSRP.",
+    "date": "2026-10-06T08:07:53.687Z",
+    "inventory": {
+      "id": "cmuwec11y000p3j1u3b1vtctk",
+      "productId": "cmuwec11y000o3j1uaoxsk8om",
+      "condition": "Good",
+      "color": "White/Black",
+      "storage": "825GB",
+      "price": 349,
+      "stockQuantity": 4,
+      "createdAt": "2026-10-06T08:07:53.687Z",
+      "updatedAt": "2026-10-06T08:07:53.687Z",
+      "product": {
+        "id": "cmuwec11y000o3j1uaoxsk8om",
+        "name": "PlayStation 5 Digital Edition",
+        "brand": "Sony",
+        "category": "Consoles",
+        "basePrice": 449,
+        "images": "[\"/console.jpg\"]",
+        "specs": "{\"resolution\":\"Up to 4K 120fps & 8K HDR\",\"storage\":\"825GB Ultra-High Speed SSD\",\"controller\":\"DualSense Wireless included\"}",
+        "createdAt": "2026-10-06T08:07:53.687Z",
+        "updatedAt": "2026-10-06T08:07:53.687Z"
+      }
+    }
+  },
+  {
+    "id": "cmuwec11q000n3j1u2msgxuhe",
+    "userId": "usr_ap1",
+    "userName": "Jessica Liang",
+    "inventoryId": "cmuwec11q000m3j1uf57awqpn",
+    "rating": 5,
+    "comment": "Professionally sanitized, pristine ear tips included. Noise cancellation is magic.",
+    "date": "2026-10-06T08:07:53.678Z",
+    "inventory": {
+      "id": "cmuwec11q000m3j1uf57awqpn",
+      "productId": "cmuwec11q000k3j1u0dgn59qk",
+      "condition": "Excellent",
+      "color": "White",
+      "storage": "Standard",
+      "price": 179,
+      "stockQuantity": 4,
+      "createdAt": "2026-10-06T08:07:53.678Z",
+      "updatedAt": "2026-10-06T08:07:53.678Z",
+      "product": {
+        "id": "cmuwec11q000k3j1u0dgn59qk",
+        "name": "AirPods Pro 2nd Gen with MagSafe",
+        "brand": "Apple",
+        "category": "Audio",
+        "basePrice": 249,
+        "images": "[\"/airpods.jpg\"]",
+        "specs": "{\"anc\":\"Active Noise Cancellation 2x\",\"audio\":\"Adaptive Transparency & Spatial Audio\",\"battery\":\"Up to 30 hours with case\"}",
+        "createdAt": "2026-10-06T08:07:53.678Z",
+        "updatedAt": "2026-10-06T08:07:53.678Z"
+      }
+    }
+  },
+  {
+    "id": "cmuwec11j000i3j1usjge872s",
+    "userId": "usr_ipd1",
+    "userName": "Kaelen Brody",
+    "inventoryId": "cmuwec11j000h3j1ut52fvup0",
+    "rating": 5,
+    "comment": "The M1 chip on this iPad handles Procreate like a dream. Not a single scratch on glass.",
+    "date": "2026-10-06T08:07:53.671Z",
+    "inventory": {
+      "id": "cmuwec11j000h3j1ut52fvup0",
+      "productId": "cmuwec11j000f3j1u1qah91oy",
+      "condition": "Good",
+      "color": "Blue",
+      "storage": "64GB",
+      "price": 439,
+      "stockQuantity": 3,
+      "createdAt": "2026-10-06T08:07:53.671Z",
+      "updatedAt": "2026-10-06T08:07:53.671Z",
+      "product": {
+        "id": "cmuwec11j000f3j1u1qah91oy",
+        "name": "iPad Air 5th Gen M1",
+        "brand": "Apple",
+        "category": "iPads",
+        "basePrice": 599,
+        "images": "[\"/ipad.jpg\"]",
+        "specs": "{\"cpu\":\"Apple M1 Chip\",\"screen\":\"10.9\\\" Liquid Retina\",\"storage\":\"64GB / 256GB\",\"applePencil\":\"Gen 2 Compatible\"}",
+        "createdAt": "2026-10-06T08:07:53.671Z",
+        "updatedAt": "2026-10-06T08:07:53.671Z"
+      }
+    }
+  },
+  {
+    "id": "cmuwec11a000d3j1uocy2knkb",
+    "userId": "usr_aw1",
+    "userName": "Sarah Jenkins",
+    "inventoryId": "cmuwec11a000c3j1uvd5o6xgn",
+    "rating": 5,
+    "comment": "Came with pristine original magnetic charger. Very satisfied with battery!",
+    "date": "2026-10-06T08:07:53.662Z",
+    "inventory": {
+      "id": "cmuwec11a000c3j1uvd5o6xgn",
+      "productId": "cmuwec11a000b3j1uvqv2rop1",
+      "condition": "Good",
+      "color": "Midnight Blue",
+      "storage": "32GB",
+      "price": 249,
+      "stockQuantity": 7,
+      "createdAt": "2026-10-06T08:07:53.662Z",
+      "updatedAt": "2026-10-06T08:07:53.662Z",
+      "product": {
+        "id": "cmuwec11a000b3j1uvqv2rop1",
+        "name": "Apple Watch Series 8 (45mm GPS)",
+        "brand": "Apple",
+        "category": "Great deals",
+        "basePrice": 429,
+        "images": "[\"/promo2.jpg\"]",
+        "specs": "{\"display\":\"Always-On Retina OLED\",\"sensors\":\"ECG, Blood Oxygen, Temp\",\"waterResistance\":\"50m water resistant\"}",
+        "createdAt": "2026-10-06T08:07:53.662Z",
+        "updatedAt": "2026-10-06T08:07:53.662Z"
+      }
+    }
+  },
+  {
+    "id": "cmuwec11300083j1urpbgjudq",
+    "userId": "usr_ip1",
+    "userName": "Damon Vance",
+    "inventoryId": "cmuwec11300073j1u1zdgb08x",
+    "rating": 5,
+    "comment": "Battery health was at 94% upon arrival. Super responsive and fast dispatch!",
+    "date": "2026-10-06T08:07:53.655Z",
+    "inventory": {
+      "id": "cmuwec11300073j1u1zdgb08x",
+      "productId": "cmuwec11300063j1umq57127v",
+      "condition": "Fair",
+      "color": "Sierra Blue",
+      "storage": "128GB",
+      "price": 499,
+      "stockQuantity": 8,
+      "createdAt": "2026-10-06T08:07:53.655Z",
+      "updatedAt": "2026-10-06T08:07:53.655Z",
+      "product": {
+        "id": "cmuwec11300063j1umq57127v",
+        "name": "iPhone 13 Pro",
+        "brand": "Apple",
+        "category": "Smartphones",
+        "basePrice": 999,
+        "images": "[\"/cinematic_iphone.jpg\"]",
+        "specs": "{\"screen\":\"6.1\\\" Super Retina XDR OLED\",\"camera\":\"Triple 12MP Pro system\",\"storage\":\"128GB\",\"battery\":\"92% capacity\"}",
+        "createdAt": "2026-10-06T08:07:53.655Z",
+        "updatedAt": "2026-10-06T08:07:53.655Z"
+      }
+    }
+  },
+  {
+    "id": "cmuwec10t00023j1uqmx9fr4g",
+    "userId": "usr_mb1",
+    "userName": "Marcus Sterling",
+    "inventoryId": "cmuwec10t00013j1uh9p4j6hq",
+    "rating": 4,
+    "comment": "Functions 100% like new. Light scuffs on bottom casing but screen is perfect!",
+    "date": "2026-10-06T08:07:53.645Z",
+    "inventory": {
+      "id": "cmuwec10t00013j1uh9p4j6hq",
+      "productId": "cmuwec10t00003j1ui8tshk4l",
+      "condition": "Fair",
+      "color": "Space Gray",
+      "storage": "512GB",
+      "price": 1399,
+      "stockQuantity": 4,
+      "createdAt": "2026-10-06T08:07:53.645Z",
+      "updatedAt": "2026-10-06T08:07:53.645Z",
+      "product": {
+        "id": "cmuwec10t00003j1ui8tshk4l",
+        "name": "MacBook Pro 14\" M2",
+        "brand": "Apple",
+        "category": "MacBooks",
+        "basePrice": 1999,
+        "images": "[\"/cinematic_macbook.jpg\"]",
+        "specs": "{\"cpu\":\"Apple M2 Pro (10-Core)\",\"ram\":\"16GB Unified\",\"storage\":\"512GB SSD\",\"screen\":\"14.2\\\" Liquid Retina XDR\",\"battery\":\"96% capacity\"}",
+        "createdAt": "2026-10-06T08:07:53.645Z",
+        "updatedAt": "2026-10-06T08:07:53.645Z"
+      }
+    }
+  },
+  {
+    "id": "cmuwec10t00053j1uvsbx9mu7",
+    "userId": "usr_mb2",
+    "userName": "Elena Rostova",
+    "inventoryId": "cmuwec10t00043j1ugl61as0w",
+    "rating": 5,
+    "comment": "Flawless condition. Unbelievable savings compared to buying direct from retail.",
+    "date": "2026-10-06T08:07:53.645Z",
+    "inventory": {
+      "id": "cmuwec10t00043j1ugl61as0w",
+      "productId": "cmuwec10t00003j1ui8tshk4l",
+      "condition": "Excellent",
+      "color": "Space Gray",
+      "storage": "1TB",
+      "price": 1749,
+      "stockQuantity": 3,
+      "createdAt": "2026-10-06T08:07:53.645Z",
+      "updatedAt": "2026-10-06T08:07:53.645Z",
+      "product": {
+        "id": "cmuwec10t00003j1ui8tshk4l",
+        "name": "MacBook Pro 14\" M2",
+        "brand": "Apple",
+        "category": "MacBooks",
+        "basePrice": 1999,
+        "images": "[\"/cinematic_macbook.jpg\"]",
+        "specs": "{\"cpu\":\"Apple M2 Pro (10-Core)\",\"ram\":\"16GB Unified\",\"storage\":\"512GB SSD\",\"screen\":\"14.2\\\" Liquid Retina XDR\",\"battery\":\"96% capacity\"}",
+        "createdAt": "2026-10-06T08:07:53.645Z",
+        "updatedAt": "2026-10-06T08:07:53.645Z"
+      }
+    }
+  }
+]

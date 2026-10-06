@@ -42,10 +42,9 @@ yarn-error.log*
 next-env.d.ts
 
 # database
-prisma/*.db
-prisma/*.db-journal
-*.db
 *.db-journal
+*.db
+!prisma/dev.db
 
 # ide
 .vscode/
