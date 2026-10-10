@@ -5,7 +5,7 @@ import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvide
 import { MarketplaceHeader } from '@/components/cinematic/MarketplaceHeader';
 import { CinematicHeroSection } from '@/components/cinematic/CinematicHeroSection';
 import { ProductsView } from './ProductsView';
-import { PromoBanners, TrustPromise, TestimonialsSection } from './DynamicSectionsClient';
+import { PromoBanners, TrustPromise, TestimonialsSection, TestimonialsProps } from './DynamicSectionsClient';
 import { MarketplaceFooter } from '@/components/cinematic/MarketplaceFooter';
 import { HoverGridShowcase } from '@/components/cinematic/HoverGridShowcase';
 import { GridLayoutMotionShowcase } from '@/components/cinematic/GridLayoutMotionShowcase';
@@ -15,7 +15,7 @@ import { useModals, ProductData } from '@/context/ModalContext';
 
 interface MarketplacePageClientProps {
   initialProducts: ProductData[];
-  initialReviews: any[];
+  initialReviews: TestimonialsProps['initialReviews'];
 }
 
 export function MarketplacePageClient({

@@ -1,10 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Smartphone, Laptop, Tablet, Watch, ArrowRight, CheckCircle2, DollarSign, ShieldCheck } from 'lucide-react';
+import { X, Smartphone, Laptop, Tablet, Watch, CheckCircle2, DollarSign, ShieldCheck } from 'lucide-react';
 import { useModals } from '@/context/ModalContext';
 import { Button } from '@/components/ui/button';
 import { createTradeInQuote } from '@/app/actions';
+
+function generateFallbackQuoteId(): string {
+  return 'TI-' + Math.floor(100000 + Math.random() * 900000);
+}
 
 export function TradeInModal() {
   const { isTradeInOpen, setIsTradeInOpen } = useModals();
@@ -70,7 +74,7 @@ export function TradeInModal() {
     if (res.success && res.quote) {
       setQuoteId(res.quote.id);
     } else {
-      setQuoteId('TI-' + Math.floor(100000 + Math.random() * 900000));
+      setQuoteId(generateFallbackQuoteId());
     }
 
     setIsSubmitting(false);
@@ -132,7 +136,7 @@ export function TradeInModal() {
                       key={cat.id}
                       type="button"
                       onClick={() => {
-                        setDeviceCategory(cat.id as any);
+                        setDeviceCategory(cat.id as 'smartphone' | 'laptop' | 'tablet' | 'watch');
                         setStep(2);
                       }}
                       className="p-5 rounded-xl border border-border-gray hover:border-black hover:bg-surface-gray transition-all text-left flex flex-col items-center justify-center gap-3 group"

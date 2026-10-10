@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { Search, ShoppingCart, User, Menu, X, RefreshCw, MapPin } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useModals } from '@/context/ModalContext';
@@ -19,8 +18,6 @@ export function MarketplaceHeader() {
     setIsMobileMenuOpen,
     isMobileMenuOpen,
     currentZip,
-    searchTerm,
-    setSearchTerm,
   } = useModals();
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -201,7 +198,7 @@ export function MarketplaceHeader() {
                   showTagline
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    const globalWindow = window as any;
+                    const globalWindow = window as unknown as { __lenis?: { scrollTo: (target: number | string) => void } };
                     if (globalWindow?.__lenis) {
                       globalWindow.__lenis.scrollTo(0);
                     } else {

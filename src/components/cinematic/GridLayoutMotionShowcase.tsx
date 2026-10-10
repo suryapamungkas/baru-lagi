@@ -7,6 +7,13 @@ import { Sparkles, X, ShoppingCart, ShieldCheck, ArrowRight, CheckCircle2 } from
 import { useCart } from '@/context/CartContext';
 import { useModals } from '@/context/ModalContext';
 
+// Line equation math helper (exact from Codrops demo.js)
+const lineEq = (y2: number, y1: number, x2: number, x1: number, currentVal: number) => {
+  const m = (y2 - y1) / (x2 - x1);
+  const b = y1 - m * x1;
+  return m * currentVal + b;
+};
+
 interface EditorialProduct {
   id: string;
   title: string;
@@ -27,6 +34,7 @@ export function GridLayoutMotionShowcase() {
   const gridRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const revealerRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
 
   const [activeItem, setActiveItem] = useState<EditorialProduct | null>(null);
   const isPreviewOpenRef = useRef<boolean>(false);
@@ -162,12 +170,7 @@ export function GridLayoutMotionShowcase() {
     []
   );
 
-  // Line equation math helper (exact from Codrops demo.js)
-  const lineEq = (y2: number, y1: number, x2: number, x1: number, currentVal: number) => {
-    const m = (y2 - y1) / (x2 - x1);
-    const b = y1 - m * x1;
-    return m * currentVal + b;
-  };
+
 
   // Multi-plane 3D tilt interaction logic for each item
   const handleItemMouseMove = (e: React.MouseEvent<HTMLDivElement>, itemEl: HTMLDivElement) => {
@@ -392,7 +395,7 @@ export function GridLayoutMotionShowcase() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isPreviewOpenRef.current) {
-        handleCloseItem();
+        closeBtnRef.current?.click();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -518,6 +521,7 @@ export function GridLayoutMotionShowcase() {
 
         {/* Close Button */}
         <button
+          ref={closeBtnRef}
           type="button"
           onClick={handleCloseItem}
           className="absolute top-6 right-6 z-30 p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-black transition-colors cursor-pointer border border-white/20"

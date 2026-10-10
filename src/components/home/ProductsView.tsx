@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
-import { Star, ShoppingCart, Eye, Sparkles, Filter, Search, X, Box, LayoutGrid } from 'lucide-react';
+import { Star, ShoppingCart, Eye, Sparkles, Search, X, Box, LayoutGrid } from 'lucide-react';
 import { useModals, ProductData } from '@/context/ModalContext';
 import { useCart } from '@/context/CartContext';
 import { motion } from 'framer-motion';
@@ -109,7 +109,7 @@ export function ProductsView({ initialProducts }: ProductsViewProps) {
           {/* Sort By Dropdown */}
           <select
             value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as any)}
+            onChange={(e) => setSortBy(e.target.value as 'featured' | 'price-asc' | 'price-desc')}
             className="bg-white/5 border border-white/15 text-xs font-mono font-bold uppercase rounded-lg px-3.5 py-2.5 text-white cursor-pointer hover:border-white focus:outline-none transition-colors"
           >
             <option value="featured" className="bg-black">SORT: FEATURED</option>

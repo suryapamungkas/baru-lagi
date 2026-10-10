@@ -3,7 +3,6 @@
 import React, { useRef, useState } from 'react';
 import { ArrowRight, ShieldCheck, RefreshCcw, ThumbsUp, Wrench, ChevronLeft, ChevronRight, Star, Plus } from 'lucide-react';
 import { useModals } from '@/context/ModalContext';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { submitReview } from '@/app/actions';
 import { motion } from 'framer-motion';
@@ -171,7 +170,7 @@ export function TrustPromise() {
   );
 }
 
-interface TestimonialsProps {
+export interface TestimonialsProps {
   initialReviews: {
     id: string;
     userName: string;

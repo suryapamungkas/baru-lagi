@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, MapPin, Globe, HelpCircle, User, ShieldCheck, Check, Sparkles, GraduationCap } from 'lucide-react';
+import { X, MapPin, Globe, HelpCircle, User, ShieldCheck, Check } from 'lucide-react';
 import { useModals } from '@/context/ModalContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';

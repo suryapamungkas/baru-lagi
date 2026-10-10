@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import { Sparkles, ShieldCheck, ArrowRight, Activity, Cpu, CheckCircle } from 'lucide-react';
+import { Sparkles, ShieldCheck, Cpu } from 'lucide-react';
 import { useModals } from '@/context/ModalContext';
 
 interface MotionDevice {
@@ -31,7 +31,7 @@ export function ImageGridMotionShowcase() {
   const innerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const [hoveredProduct, setHoveredProduct] = useState<MotionDevice | null>(null);
-  const { setActiveCategory, setQuickViewProduct } = useModals();
+  const { setActiveCategory } = useModals();
 
   // 10 Certified Hardware Units placed exactly across the 50x50 CSS Grid (Pos 1 to 10 from Codrops)
   const devices: MotionDevice[] = useMemo(
@@ -339,29 +339,35 @@ export function ImageGridMotionShowcase() {
 
     rAFId = requestAnimationFrame(render);
 
-    // Initial staggered explosion entrance (from demo3 Codrops)
+    // Initial staggered explosion entrance (from demo3 Codrops) triggered via IntersectionObserver
     const items = itemRefs.current.filter(Boolean);
-    if (items.length > 0) {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: container,
-            start: 'top 80%',
-          },
-        })
-        .set(items, { scale: (i) => (devices[i]?.invertMovement ? 0.35 : 0.65), opacity: 0 })
-        .to(items, {
-          duration: 1.8,
-          ease: 'expo.out',
-          scale: 1,
-          opacity: 0.85,
-          stagger: { amount: 0.5, from: 'center' },
-        });
+    let observer: IntersectionObserver | null = null;
+    if (items.length > 0 && typeof IntersectionObserver !== 'undefined') {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
+            gsap
+              .timeline()
+              .set(items, { scale: (i) => (devices[i]?.invertMovement ? 0.35 : 0.65), opacity: 0 })
+              .to(items, {
+                duration: 1.8,
+                ease: 'expo.out',
+                scale: 1,
+                opacity: 0.85,
+                stagger: { amount: 0.5, from: 'center' },
+              });
+            observer?.disconnect();
+          }
+        },
+        { rootMargin: '0px 0px -10% 0px' }
+      );
+      observer.observe(container);
     }
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(rAFId);
+      observer?.disconnect();
     };
   }, [devices]);
 

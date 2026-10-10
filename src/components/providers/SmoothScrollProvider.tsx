@@ -15,7 +15,8 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       touchMultiplier: 2,
     });
 
-    (window as any).__lenis = lenis;
+    const customWin = window as unknown as { __lenis?: Lenis };
+    customWin.__lenis = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -26,7 +27,7 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     return () => {
       cancelAnimationFrame(rafId);
-      delete (window as any).__lenis;
+      delete customWin.__lenis;
       lenis.destroy();
     };
   }, []);

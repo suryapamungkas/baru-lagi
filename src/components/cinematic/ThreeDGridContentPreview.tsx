@@ -4,13 +4,9 @@ import React, { useEffect, useRef, useState, useMemo } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import {
-  Sparkles,
   ShieldCheck,
-  BatteryCharging,
-  CheckCircle2,
   ShoppingCart,
   Maximize2,
-  Info,
   ChevronDown,
   ChevronUp,
 } from 'lucide-react';
@@ -20,6 +16,21 @@ import { useCart } from '@/context/CartContext';
 interface ThreeDGridContentPreviewProps {
   products: ProductData[];
 }
+
+// Positions on 50x50 CSS Grid (inspired directly by Codrops 3DGridContentPreview pos-1 to pos-16)
+const GRID_POS_STYLES = [
+  { row: '3 / span 11', col: '2 / span 9', rx: -6, ry: 8, tz: -280 },
+  { row: '1 / span 11', col: '15 / span 10', rx: -8, ry: 2, tz: -420 },
+  { row: '2 / span 11', col: '28 / span 9', rx: -7, ry: -6, tz: -350 },
+  { row: '3 / span 11', col: '40 / span 9', rx: -5, ry: -9, tz: -400 },
+  { row: '16 / span 11', col: '7 / span 9', rx: 0, ry: 6, tz: -250 },
+  { row: '15 / span 11', col: '20 / span 10', rx: 2, ry: -1, tz: -200 },
+  { row: '16 / span 11', col: '33 / span 9', rx: 1, ry: -7, tz: -280 },
+  { row: '29 / span 11', col: '2 / span 9', rx: 7, ry: 8, tz: -380 },
+  { row: '28 / span 11', col: '14 / span 10', rx: 6, ry: 3, tz: -240 },
+  { row: '29 / span 11', col: '27 / span 9', rx: 8, ry: -4, tz: -320 },
+  { row: '28 / span 11', col: '39 / span 9', rx: 7, ry: -8, tz: -440 },
+];
 
 export function ThreeDGridContentPreview({ products }: ThreeDGridContentPreviewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -48,21 +59,6 @@ export function ThreeDGridContentPreview({ products }: ThreeDGridContentPreviewP
       activeProduct.inventories[0]
     );
   }, [activeProduct, selectedCondition]);
-
-  // Positions on 50x50 CSS Grid (inspired directly by Codrops 3DGridContentPreview pos-1 to pos-16)
-  const gridPosStyles = [
-    { row: '3 / span 11', col: '2 / span 9', rx: -6, ry: 8, tz: -280 },
-    { row: '1 / span 11', col: '15 / span 10', rx: -8, ry: 2, tz: -420 },
-    { row: '2 / span 11', col: '28 / span 9', rx: -7, ry: -6, tz: -350 },
-    { row: '3 / span 11', col: '40 / span 9', rx: -5, ry: -9, tz: -400 },
-    { row: '16 / span 11', col: '7 / span 9', rx: 0, ry: 6, tz: -250 },
-    { row: '15 / span 11', col: '20 / span 10', rx: 2, ry: -1, tz: -200 },
-    { row: '16 / span 11', col: '33 / span 9', rx: 1, ry: -7, tz: -280 },
-    { row: '29 / span 11', col: '2 / span 9', rx: 7, ry: 8, tz: -380 },
-    { row: '28 / span 11', col: '14 / span 10', rx: 6, ry: 3, tz: -240 },
-    { row: '29 / span 11', col: '27 / span 9', rx: 8, ry: -4, tz: -320 },
-    { row: '28 / span 11', col: '39 / span 9', rx: 7, ry: -8, tz: -440 },
-  ];
 
   // Mouse Tracking & 3D Tilt Loop
   useEffect(() => {
@@ -105,7 +101,7 @@ export function ThreeDGridContentPreview({ products }: ThreeDGridContentPreviewP
         currentY = lerp(currentY, targetY, 0.05);
 
         items.forEach((item, idx) => {
-          const config = gridPosStyles[idx % gridPosStyles.length];
+          const config = GRID_POS_STYLES[idx % GRID_POS_STYLES.length];
           const dynamicRx = config.rx + (mousePos.y / winH - 0.5) * 8;
           const dynamicRy = config.ry - (mousePos.x / winW - 0.5) * 10;
 
@@ -355,7 +351,7 @@ export function ThreeDGridContentPreview({ products }: ThreeDGridContentPreviewP
           const images: string[] = JSON.parse(product.images || '["/hero.jpg"]');
           const prices = product.inventories.map((i) => i.price);
           const lowestPrice = prices.length > 0 ? Math.min(...prices) : product.basePrice;
-          const pos = gridPosStyles[index % gridPosStyles.length];
+          const pos = GRID_POS_STYLES[index % GRID_POS_STYLES.length];
 
           return (
             <div

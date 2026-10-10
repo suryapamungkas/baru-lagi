@@ -32,33 +32,29 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const stored = localStorage.getItem('bm_cart');
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) {
+        console.error(e);
+        return [];
+      }
+    }
+    return [];
+  });
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load from localStorage on mount
+  // Save to localStorage whenever items change
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem('bm_cart');
-      if (stored) {
-        setItems(JSON.parse(stored));
-      }
-    } catch (e) {
-      console.error(e);
-    }
-    setIsLoaded(true);
-  }, []);
-
-  // Save to localStorage
-  useEffect(() => {
-    if (!isLoaded) return;
     try {
       localStorage.setItem('bm_cart', JSON.stringify(items));
     } catch (e) {
       console.error(e);
     }
-  }, [items, isLoaded]);
+  }, [items]);
 
   const addToCart = (newItem: Omit<CartItem, 'quantity'>, quantity: number = 1) => {
     setItems((prev) => {
