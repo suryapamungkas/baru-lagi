@@ -58,11 +58,12 @@ export function ProductsView({ initialProducts }: ProductsViewProps) {
       });
   }, [initialProducts, activeCategory, selectedBrand, searchTerm, selectedConditionFilter, sortBy]);
 
-  const brands = ['All', 'Apple', 'Sony'];
+  const brands = ['All', 'Apple', 'Sony', 'Samsung', 'Nintendo', 'Valve'];
   const conditions = ['All', 'Fair', 'Good', 'Excellent'];
 
   return (
-    <section id="catalog-section" className="py-24 px-6 md:px-12 lg:px-20 mx-auto max-w-7xl bg-black text-white">
+    <section id="catalog-section" className="relative py-24 px-6 md:px-12 lg:px-20 mx-auto max-w-7xl bg-black text-white">
+      <div id="products-section" className="absolute -top-20 left-0 pointer-events-none" />
       {/* Catalog Title & Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}

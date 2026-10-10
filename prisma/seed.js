@@ -282,6 +282,220 @@ async function main() {
     }
   });
 
+  // 7. Sony WH-1000XM5 (Audio)
+  await prisma.product.create({
+    data: {
+      name: 'Sony WH-1000XM5 Wireless ANC',
+      brand: 'Sony',
+      category: 'Audio',
+      basePrice: 399.0,
+      images: JSON.stringify(['/headphones_xm5.jpg']),
+      specs: JSON.stringify({ driver: '30mm Carbon Dome', anc: 'Auto NC Optimizer & 8 Mics', battery: '30h Playback w/ Quick Charge', weight: '250g Lightweight' }),
+      inventories: {
+        create: [
+          {
+            condition: 'Fair',
+            color: 'Black',
+            storage: 'N/A',
+            price: 249.0,
+            stockQuantity: 5,
+          },
+          {
+            condition: 'Good',
+            color: 'Black',
+            storage: 'N/A',
+            price: 279.0,
+            stockQuantity: 7,
+            reviews: {
+              create: [
+                {
+                  userId: 'usr_xm5_1',
+                  userName: 'Nadia Putri',
+                  rating: 5,
+                  comment: 'Noise cancelling luar biasa hening. Kondisi fisik mulus tanpa goresan sama sekali!'
+                }
+              ]
+            }
+          },
+          {
+            condition: 'Excellent',
+            color: 'Black',
+            storage: 'N/A',
+            price: 319.0,
+            stockQuantity: 3,
+          }
+        ]
+      }
+    }
+  });
+
+  // 8. Nintendo Switch OLED (Consoles)
+  await prisma.product.create({
+    data: {
+      name: 'Nintendo Switch OLED Edition',
+      brand: 'Nintendo',
+      category: 'Consoles',
+      basePrice: 349.0,
+      images: JSON.stringify(['/switch_oled.jpg']),
+      specs: JSON.stringify({ display: '7.0" Deep Contrast OLED', storage: '64GB Internal + LAN Dock', audio: 'Enhanced Stereo Speakers', battery: 'Up to 9h battery life' }),
+      inventories: {
+        create: [
+          {
+            condition: 'Good',
+            color: 'White Joy-Con',
+            storage: '64GB',
+            price: 259.0,
+            stockQuantity: 6,
+            reviews: {
+              create: [
+                {
+                  userId: 'usr_sw1',
+                  userName: 'Bima Santoso',
+                  rating: 5,
+                  comment: 'Layar OLED-nya super tajam dan jernih. Joycon no-drift, tombol responsif 100%!'
+                }
+              ]
+            }
+          },
+          {
+            condition: 'Excellent',
+            color: 'White Joy-Con',
+            storage: '64GB',
+            price: 289.0,
+            stockQuantity: 4,
+          }
+        ]
+      }
+    }
+  });
+
+  // 9. Apple Watch Ultra 2 (Great deals / Wearables)
+  await prisma.product.create({
+    data: {
+      name: 'Apple Watch Ultra 2 (49mm Titanium)',
+      brand: 'Apple',
+      category: 'Great deals',
+      basePrice: 799.0,
+      images: JSON.stringify(['/watch_ultra.jpg']),
+      specs: JSON.stringify({ case: '49mm Aerospace Titanium', brightness: '3000 Nits Sapphire Glass', depth: '100m Water & EN13319 Dive', battery: '72h Low Power Mode' }),
+      inventories: {
+        create: [
+          {
+            condition: 'Good',
+            color: 'Titanium Natural',
+            storage: '64GB',
+            price: 599.0,
+            stockQuantity: 3,
+            reviews: {
+              create: [
+                {
+                  userId: 'usr_wult1',
+                  userName: 'Reza Fahlevi',
+                  rating: 5,
+                  comment: 'Baterai masih 98% health. Sangat kokoh untuk outdoor dan olahraga berat.'
+                }
+              ]
+            }
+          },
+          {
+            condition: 'Excellent',
+            color: 'Titanium Natural',
+            storage: '64GB',
+            price: 649.0,
+            stockQuantity: 2,
+          }
+        ]
+      }
+    }
+  });
+
+  // 10. Samsung Galaxy S24 Ultra (Smartphones)
+  await prisma.product.create({
+    data: {
+      name: 'Samsung Galaxy S24 Ultra 5G',
+      brand: 'Samsung',
+      category: 'Smartphones',
+      basePrice: 1299.0,
+      images: JSON.stringify(['/galaxy_s24.jpg']),
+      specs: JSON.stringify({ screen: '6.8" QHD+ Dynamic AMOLED 2X', camera: '200MP Quad Zoom & Galaxy AI', chipset: 'Snapdragon 8 Gen 3 for Galaxy', stylus: 'Built-in S-Pen Titanium' }),
+      inventories: {
+        create: [
+          {
+            condition: 'Fair',
+            color: 'Titanium Gray',
+            storage: '256GB',
+            price: 799.0,
+            stockQuantity: 4,
+          },
+          {
+            condition: 'Good',
+            color: 'Titanium Gray',
+            storage: '512GB',
+            price: 889.0,
+            stockQuantity: 5,
+            reviews: {
+              create: [
+                {
+                  userId: 'usr_s24_1',
+                  userName: 'Arif Wibowo',
+                  rating: 5,
+                  comment: 'Hasil kamera zoom 100x jernih banget. Layar flat anti-reflective super mewah.'
+                }
+              ]
+            }
+          },
+          {
+            condition: 'Excellent',
+            color: 'Titanium Black',
+            storage: '512GB',
+            price: 969.0,
+            stockQuantity: 2,
+          }
+        ]
+      }
+    }
+  });
+
+  // 11. Steam Deck OLED (Consoles)
+  await prisma.product.create({
+    data: {
+      name: 'Valve Steam Deck OLED (1TB)',
+      brand: 'Valve',
+      category: 'Consoles',
+      basePrice: 649.0,
+      images: JSON.stringify(['/steam_deck.jpg']),
+      specs: JSON.stringify({ screen: '7.4" 90Hz HDR OLED Panel', apu: '6nm AMD Custom Zen 2 + RDNA 2', storage: '1TB High-Speed NVMe SSD', battery: '50Wh battery w/ 45W Type-C' }),
+      inventories: {
+        create: [
+          {
+            condition: 'Good',
+            color: 'Matte Black',
+            storage: '1TB',
+            price: 499.0,
+            stockQuantity: 4,
+            reviews: {
+              create: [
+                {
+                  userId: 'usr_sd1',
+                  userName: 'Kevin Pratama',
+                  rating: 5,
+                  comment: 'Layar 90Hz OLED warna hitam pekat sempurna. Main Cyberpunk lancar jaya!'
+                }
+              ]
+            }
+          },
+          {
+            condition: 'Excellent',
+            color: 'Matte Black',
+            storage: '1TB',
+            price: 549.0,
+            stockQuantity: 2,
+          }
+        ]
+      }
+    }
+  });
+
   // Seed sample Trade-In Quote
   await prisma.tradeInQuote.create({
     data: {
@@ -291,7 +505,7 @@ async function main() {
     }
   });
 
-  console.log('Seeding completed successfully with 6 diverse products, multiple SKUs, and authentic reviews!');
+  console.log('Seeding completed successfully with 11 certified products, multiple SKUs, and authentic reviews!');
 }
 
 main()
