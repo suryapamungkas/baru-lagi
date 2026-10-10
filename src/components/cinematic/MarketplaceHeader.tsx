@@ -86,6 +86,21 @@ export function MarketplaceHeader() {
               </div>
             ))}
 
+            {/* Capsules Link */}
+            <div className="relative group py-1">
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById('capsules-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="text-white/80 hover:text-white transition-colors cursor-pointer"
+              >
+                KAPSUL
+              </button>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-lime transition-all duration-300 ease-out group-hover:w-full" />
+            </div>
+
             {/* Ecosystem Showcase Link */}
             <div className="relative group py-1">
               <button
@@ -114,6 +129,36 @@ export function MarketplaceHeader() {
                 VAULT
               </button>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full" />
+            </div>
+
+            {/* Journal Link */}
+            <div className="relative group py-1">
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById('journal-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="text-white/80 hover:text-white transition-colors cursor-pointer"
+              >
+                JURNAL
+              </button>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-lime transition-all duration-300 ease-out group-hover:w-full" />
+            </div>
+
+            {/* Manifesto Link */}
+            <div className="relative group py-1">
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById('manifesto-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="text-white/80 hover:text-white transition-colors cursor-pointer"
+              >
+                MANIFESTO
+              </button>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-lime transition-all duration-300 ease-out group-hover:w-full" />
             </div>
 
             {/* Trade In Link */}
@@ -221,6 +266,39 @@ export function MarketplaceHeader() {
                     {item.label}
                   </button>
                 ))}
+
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    const el = document.getElementById('capsules-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="block text-xl font-black uppercase tracking-[0.2em] text-accent-lime hover:text-white text-left transition-colors"
+                >
+                  &rarr; KAPSUL KURASI
+                </button>
+
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    const el = document.getElementById('journal-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="block text-xl font-black uppercase tracking-[0.2em] text-white/80 hover:text-white text-left transition-colors"
+                >
+                  JURNAL SIRKULAR
+                </button>
+
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    const el = document.getElementById('manifesto-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="block text-xl font-black uppercase tracking-[0.2em] text-white/80 hover:text-white text-left transition-colors"
+                >
+                  MANIFESTO KOLEKTIF
+                </button>
 
                 <button
                   onClick={() => {

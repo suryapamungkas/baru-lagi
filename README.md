@@ -30,14 +30,29 @@ Website ini dirancang secara eksklusif dengan bahasa desain **Cinematic Dark Lux
 
 ## ✨ Fitur Utama
 
-- **Estetika Cinematic Dark Luxury & Micro-Interactions**:
-  - Transisi visual halus, efek *spotlight cursor*, dan *backdrop-blur* premium.
+- **Estetika Cinematic Dark Luxury & Isle Thorne Collective Design System**:
+  - Arsitektur grid 12-kolom responsif (`grid-site`) dengan penataan tipografi mono dan kontras tinggi.
+  - Tirai pembuka sinematik (*Loading Curtain Interlude*) berbasis GSAP `clip-path` motion.
   - *Smooth momentum scrolling* ditenagai oleh Lenis Engine.
   - Komponen Logo Interaktif: monogram geometris huruf **B** dengan busur regenerasi sirkular yang memiliki interaksi *click-to-scroll-to-top*.
+- **Kurasi Kapsul Hardware Bernomor (*Curated Capsules 01–04*)**:
+  - 4 koleksi kurasi bertema hardware (*Apple Silicon Studio*, *Pro Mobility*, *Hybrid Gaming & Acoustic*, *Extreme Wearable*).
+  - Baris kartu produk dengan geser momentum horizontal (*horizontal scroll-snap row*).
+- **Riset & Jurnal Sirkular (*Circular Journal Stories*)**:
+  - Artikel investigasi dan esai laboratorium (*Audit 25-Titik*, *Penghematan 91% Emisi Karbon*, *Metalurgi Titanium Aerospace*).
+  - Modal reader interaktif dengan tipografi editorial, waktu baca, dan kutipan teknis.
+- **Manifesto Kolektif & Kolaborasi Laboratorium (*Brand Manifesto*)**:
+  - Deklarasi visi ekonomi sirkular oleh Nur Hidayat Surya Pamungkas.
+  - Rekam jejak kemitraan laboratorium diagnostik independen dan sorotan liputan pers nasional.
+- **Etalase Interaktif Multidimensi**:
+  - **3D Grid Content Preview**: Grid 3 dimensi interaktif dengan visualisasi kartu gawai.
+  - **Hover Grid Showcase**: Efek multi-image reveal terkurasi untuk ekosistem perangkat.
+  - **Grid Layout Motion Showcase (Masterpiece Vault)**: Multi-plane 3D tilt dengan exploding detail preview.
+  - **Image Grid Motion Showcase (Lab Matrix)**: Dual-parallax floating hardware showcase.
 - **Katalog Produk Dinamis & Multi-Tier Grading**:
   - Filter kategori instan (MacBooks, Smartphones, iPads, Audio, Consoles).
   - Pilihan kondisi fisik transparan (*Fair*, *Good*, *Excellent*) dengan penyesuaian harga *real-time*.
-  - Rincian spesifikasi teknis lengkap, status kesehatan baterai (>85%), dan ulasan pembeli terverifikasi.
+  - Modal detail produk dengan drawer 4-panel (*Diagnostik Lab 25-Titik*, *Spesifikasi Hardware*, *Proses Rekondisi*, *Garansi & Logistik*).
 - **Kalkulator Tukar Tambah (*Trade-In Engine*)**:
   - Simulasi nilai taksir instan untuk menjual atau menukar gadget lama menjadi uang tunai/saldo belanja hanya dalam 4 langkah terpandu.
 - **Sistem Keranjang & Checkout Lengkap**:

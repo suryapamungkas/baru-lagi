@@ -10,6 +10,10 @@ import { MarketplaceFooter } from '@/components/cinematic/MarketplaceFooter';
 import { HoverGridShowcase } from '@/components/cinematic/HoverGridShowcase';
 import { GridLayoutMotionShowcase } from '@/components/cinematic/GridLayoutMotionShowcase';
 import { ImageGridMotionShowcase } from '@/components/cinematic/ImageGridMotionShowcase';
+import { LoadingCurtain } from '@/components/cinematic/LoadingCurtain';
+import { CuratedCapsulesSection } from '@/components/editorial/CuratedCapsulesSection';
+import { JournalSection } from '@/components/editorial/JournalSection';
+import { ManifestoSection } from '@/components/editorial/ManifestoSection';
 import { NewsletterModal } from '@/components/home/NewsletterModal';
 import { useModals, ProductData } from '@/context/ModalContext';
 
@@ -37,6 +41,9 @@ export function MarketplacePageClient({
   return (
     <SmoothScrollProvider>
       <div className="relative min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
+        {/* Full-Screen Loading Curtain (Isle Thorne Collective / Codrops Interlude Transition) */}
+        <LoadingCurtain />
+
         {/* Global Fixed Marketplace Navigation Header */}
         <MarketplaceHeader />
 
@@ -89,13 +96,16 @@ export function MarketplacePageClient({
           imageAlt="Array of smartwatches on dark surface"
           onPrimaryClick={() => setIsTradeInOpen(true)}
           onSecondaryClick={() => scrollToCatalog('All')}
-          nextSectionId="ecosystem-section"
+          nextSectionId="capsules-section"
           stats={[
             { label: 'APPRAISAL TIME', value: 'INSTANT QUOTE' },
             { label: 'SHIPPING KIT', value: 'FREE PREPAID BOX' },
             { label: 'CARBON AVOIDED', value: '91% CO2e REDUCED' },
           ]}
         />
+
+        {/* CURATED CAPSULES: ISLE THORNE COLLECTIVE NUMBERED ARCHIVE */}
+        <CuratedCapsulesSection products={initialProducts} />
 
         {/* HOVER GRID SHOWCASE: EKOSISTEM & KURASI PILIHAN (Metalab/Codrops Multi-Image Reveal) */}
         <HoverGridShowcase />
@@ -114,6 +124,12 @@ export function MarketplacePageClient({
 
         {/* IMAGE GRID MOTION SHOWCASE: 25-POINT LAB MATRIX (Dual-Parallax Dynamic Floating Hardware) */}
         <ImageGridMotionShowcase />
+
+        {/* EDITORIAL CIRCULAR JOURNAL: IN-DEPTH STORIES & ESSAYS */}
+        <JournalSection />
+
+        {/* BRAND MANIFESTO & LAB COLLABORATIONS */}
+        <ManifestoSection />
 
         {/* REAL REVIEWS CAROUSEL & WRITE A REVIEW */}
         <TestimonialsSection initialReviews={initialReviews} />

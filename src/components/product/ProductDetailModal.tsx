@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { X, ShieldCheck, Check, Star, RefreshCw, ShoppingCart, Zap } from 'lucide-react';
+import { X, ShieldCheck, Check, Star, RefreshCw, ShoppingCart, Zap, ChevronDown, Cpu, Activity, Sparkles, Truck } from 'lucide-react';
 import { useModals } from '@/context/ModalContext';
 import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/button';
@@ -192,17 +192,80 @@ export function ProductDetailModal() {
                 </p>
               </div>
 
-              {/* Specs Brief */}
-              <div className="space-y-2 mb-6">
-                <span className="text-xs font-bold uppercase tracking-wider text-gray-600">Key Specifications:</span>
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  {Object.entries(specs).map(([key, val]) => (
-                    <div key={key} className="p-2 bg-surface-gray rounded border border-border-gray">
-                      <span className="text-gray-400 uppercase font-semibold text-[10px] block">{key}</span>
-                      <span className="font-semibold text-black">{String(val)}</span>
+              {/* Isle Thorne 4-Panel Details Accordion */}
+              <div className="space-y-2 mb-6 text-xs">
+                {/* 1. Diagnostik Lab 25-Titik */}
+                <details open className="group border border-border-gray rounded-xl overflow-hidden bg-surface-gray">
+                  <summary className="flex items-center justify-between p-3 font-mono font-bold uppercase tracking-wider text-black cursor-pointer hover:bg-gray-100 transition-colors list-none select-none">
+                    <span className="flex items-center gap-2 text-[11px]">
+                      <Activity className="h-3.5 w-3.5 text-emerald-600" />
+                      <span>[ DIAGNOSTIK LAB 25-TITIK ]</span>
+                    </span>
+                    <ChevronDown className="h-3.5 w-3.5 text-gray-400 group-open:rotate-180 transition-transform" />
+                  </summary>
+                  <div className="p-3.5 pt-0 text-gray-600 space-y-1.5 border-t border-border-gray/50 text-[11px] font-sans">
+                    <p className="font-semibold text-black">Audit Diagnostik Bertingkat Laboratorium:</p>
+                    <ul className="grid grid-cols-2 gap-1.5 list-disc pl-4 text-gray-500 text-[10px]">
+                      <li>Motherboard &amp; Tegangan IC</li>
+                      <li>Health Baterai &gt; 85%</li>
+                      <li>Kalibrasi Sensor &amp; TrueTone</li>
+                      <li>Face ID / Biometrik Fingerprint</li>
+                      <li>Kerapatan Pixel &amp; Responsivitas</li>
+                      <li>Mikrofon &amp; Audio Spasial</li>
+                    </ul>
+                  </div>
+                </details>
+
+                {/* 2. Spesifikasi Hardware */}
+                <details className="group border border-border-gray rounded-xl overflow-hidden bg-surface-gray">
+                  <summary className="flex items-center justify-between p-3 font-mono font-bold uppercase tracking-wider text-black cursor-pointer hover:bg-gray-100 transition-colors list-none select-none">
+                    <span className="flex items-center gap-2 text-[11px]">
+                      <Cpu className="h-3.5 w-3.5 text-blue-600" />
+                      <span>[ SPESIFIKASI HARDWARE ]</span>
+                    </span>
+                    <ChevronDown className="h-3.5 w-3.5 text-gray-400 group-open:rotate-180 transition-transform" />
+                  </summary>
+                  <div className="p-3.5 pt-0 text-gray-600 space-y-2 border-t border-border-gray/50 text-[11px] font-sans">
+                    <div className="grid grid-cols-2 gap-2">
+                      {Object.entries(specs).map(([key, val]) => (
+                        <div key={key} className="p-1.5 bg-white rounded border border-border-gray/60">
+                          <span className="text-gray-400 uppercase font-semibold text-[9px] block font-mono">{key}</span>
+                          <span className="font-semibold text-black text-[11px]">{String(val)}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                </details>
+
+                {/* 3. Proses Rekondisi & Higienisasi */}
+                <details className="group border border-border-gray rounded-xl overflow-hidden bg-surface-gray">
+                  <summary className="flex items-center justify-between p-3 font-mono font-bold uppercase tracking-wider text-black cursor-pointer hover:bg-gray-100 transition-colors list-none select-none">
+                    <span className="flex items-center gap-2 text-[11px]">
+                      <Sparkles className="h-3.5 w-3.5 text-amber-500" />
+                      <span>[ PROSES REKONDISI &amp; HIGIENISASI ]</span>
+                    </span>
+                    <ChevronDown className="h-3.5 w-3.5 text-gray-400 group-open:rotate-180 transition-transform" />
+                  </summary>
+                  <div className="p-3.5 pt-0 text-gray-600 space-y-1.5 border-t border-border-gray/50 text-[11px] font-sans">
+                    <p>Pembersihan ultrasonik medis pada port dan kisi speaker. Penggantian pasta termal grade industri untuk pendinginan optimal.</p>
+                    <p className="text-[10px] text-gray-500 font-mono">Penghapusan data bersertifikasi DoD 5220.22-M tanpa jejak.</p>
+                  </div>
+                </details>
+
+                {/* 4. Garansi & Logistik Terproteksi */}
+                <details className="group border border-border-gray rounded-xl overflow-hidden bg-surface-gray">
+                  <summary className="flex items-center justify-between p-3 font-mono font-bold uppercase tracking-wider text-black cursor-pointer hover:bg-gray-100 transition-colors list-none select-none">
+                    <span className="flex items-center gap-2 text-[11px]">
+                      <Truck className="h-3.5 w-3.5 text-purple-600" />
+                      <span>[ GARANSI &amp; LOGISTIK TERPROTEKSI ]</span>
+                    </span>
+                    <ChevronDown className="h-3.5 w-3.5 text-gray-400 group-open:rotate-180 transition-transform" />
+                  </summary>
+                  <div className="p-3.5 pt-0 text-gray-600 space-y-1.5 border-t border-border-gray/50 text-[11px] font-sans">
+                    <p>Garansi komersial 1 tahun penuh: motherboard, layar, dan baterai. Opsi ganti unit atau refund 100%.</p>
+                    <p className="text-[10px] text-gray-500">Asuransi ekspedisi gratis &amp; kemasan kardus daur ulang bebas plastik.</p>
+                  </div>
+                </details>
               </div>
 
               {/* Stock Status */}

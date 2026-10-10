@@ -46,34 +46,43 @@ export function MarketplaceFooter() {
   ];
 
   return (
-    <footer className="bg-black text-white py-14 px-6 md:px-12 border-t border-white/10">
-      <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-        {/* Brand Logo with Smooth Scroll to Top */}
-        <BaruLagiLogo size="sm" showTagline />
+    <footer className="bg-black text-white py-16 px-6 md:px-12 border-t border-white/10 select-none">
+      <div className="mx-auto max-w-7xl grid-site items-start gap-y-8">
+        {/* Col 1-3: Brand & Heritage */}
+        <div className="col-span-2 lg:col-span-3 space-y-3">
+          <BaruLagiLogo size="sm" showTagline />
+          <p className="text-[11px] font-mono text-[#A0A0A0] leading-relaxed max-w-xs">
+            Marketplace resmi gawai rekondisi bersertifikasi di Indonesia. Mengakhiri pemborosan teknologi cepat saji melalui sirkularitas berstandar lab 25-titik.
+          </p>
+        </div>
 
-        {/* Tautan horizontal di tengah */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#A0A0A0]">
+        {/* Col 4-8: Quick Links on Site Grid */}
+        <div className="col-span-2 lg:col-span-6 lg:col-start-4 flex flex-wrap gap-x-8 gap-y-3 text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#A0A0A0]">
           {links.map((link) => (
             <button
               key={link.label}
               type="button"
               onClick={link.action}
-              className="hover:text-white transition-colors cursor-pointer"
+              className="hover:text-white transition-colors cursor-pointer text-left"
             >
-              {link.label}
+              [ {link.label} ]
             </button>
           ))}
         </div>
 
-        <div className="flex flex-col md:items-end text-[10px] font-mono text-[#A0A0A0]">
-          <span className="text-white font-bold tracking-widest">
+        {/* Col 9-12: Copyright & Author */}
+        <div className="col-span-2 lg:col-span-3 lg:col-start-10 justify-self-start lg:justify-self-end text-left lg:text-right space-y-1 text-[11px] font-mono">
+          <span className="text-white font-bold tracking-widest block">
             BARULAGI &copy; {new Date().getFullYear()}
           </span>
-          <span className="text-accent-lime mt-0.5">
+          <span className="text-accent-lime block font-bold">
             100% GAWAI ORIGINAL &amp; BERGARANSI
           </span>
-          <span className="text-white/40 mt-1">
-            Created by Nur Hidayat Surya Pamungkas
+          <span className="text-[#A0A0A0] block text-[10px]">
+            Created by <strong className="text-white">Nur Hidayat Surya Pamungkas</strong>
+          </span>
+          <span className="text-white/40 block text-[9px] pt-1">
+            JAKARTA &bull; SURABAYA &bull; INDONESIA
           </span>
         </div>
       </div>
