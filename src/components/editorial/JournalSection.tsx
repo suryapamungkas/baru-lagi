@@ -28,8 +28,8 @@ export function JournalSection() {
       date: 'Oktober 2026',
       readTime: '8 Menit Baca',
       author: 'Luna Cress & Nur Hidayat Surya Pamungkas',
-      cover: '/behind-the-craft.jpg',
-      coverAlt: 'Teknisi laboratorium menguji komponen mikroskopik motherboard gawai',
+      cover: '/journal_diagnostics.jpg',
+      coverAlt: 'Teknisi laboratorium berevolusi menguji logic board gawai di bawah mikroskop presisi dengan monitor diagnostik',
       summary:
         'Perjalanan mendalam ke dalam fasilitas diagnostik BaruLagi, tempat di mana setiap logic board, sensor optik, dan kapasitas baterai diaudit menggunakan instrumen presisi.',
       quote: 'Gawai yang bertahan selama satu dekade adalah wujud teknologi paling ramah lingkungan yang bisa kita ciptakan.',
@@ -45,8 +45,8 @@ export function JournalSection() {
       date: 'September 2026',
       readTime: '6 Menit Baca',
       author: 'Dr. Aris Sudarmawan & Tim Sirkular BaruLagi',
-      cover: '/transform-your-living-space.jpg',
-      coverAlt: 'Analisis visual perbandingan emisi karbon manufaktur perangkat gawai',
+      cover: '/journal_carbon.jpg',
+      coverAlt: 'Komponen gawai terdisasimilasi secara sirkular dengan metrik pengurangan emisi karbon CO2e',
       summary:
         'Memproduksi satu laptop atau smartphone baru melepaskan hingga 80kg CO2e dan mengonsumsi ribuan liter air bersih. Mengapa sirkularitas gawai adalah solusi nyata bagi Indonesia.',
       quote: 'Memproduksi satu smartphone baru menghabiskan hingga 80kg CO2e dan 12.000 liter air. Rekondisi memutus siklus pemborosan tersebut.',
@@ -62,8 +62,8 @@ export function JournalSection() {
       date: 'Agustus 2026',
       readTime: '5 Menit Baca',
       author: 'Bima Perkasa (Lead Hardware Engineer)',
-      cover: '/design-inspirations.jpg',
-      coverAlt: 'Struktur rangka bodi titanium dan sasis aluminium daur ulang',
+      cover: '/journal_titanium.jpg',
+      coverAlt: 'Bodi titanium Grade 5 dan sasis baja nirkarat smartphone flagship dengan presisi chamfer CNC',
       summary:
         'Kekuatan material bodi titanium Grade 5 dan stainless steel bedah. Mengapa sasis gawai flagship modern dirancang untuk diperbaiki dan diwariskan.',
       quote: 'Ketangguhan titanium Grade 5 dan stainless steel bedah bukan sekadar estetika, melainkan arsitektur ketahanan sejati.',
