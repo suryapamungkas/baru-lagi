@@ -8,6 +8,7 @@ import { ProductsView } from './ProductsView';
 import { PromoBanners, TrustPromise, TestimonialsSection } from './DynamicSectionsClient';
 import { MarketplaceFooter } from '@/components/cinematic/MarketplaceFooter';
 import { HoverGridShowcase } from '@/components/cinematic/HoverGridShowcase';
+import { ImageGridMotionShowcase } from '@/components/cinematic/ImageGridMotionShowcase';
 import { NewsletterModal } from '@/components/home/NewsletterModal';
 import { useModals, ProductData } from '@/context/ModalContext';
 
@@ -106,6 +107,9 @@ export function MarketplacePageClient({
 
         {/* TRUST PILLARS (1-Year Warranty, 30-Day Returns, 25-Point Lab Inspection, Free Shipping) */}
         <TrustPromise />
+
+        {/* IMAGE GRID MOTION SHOWCASE: 25-POINT LAB MATRIX (Dual-Parallax Dynamic Floating Hardware) */}
+        <ImageGridMotionShowcase />
 
         {/* REAL REVIEWS CAROUSEL & WRITE A REVIEW */}
         <TestimonialsSection initialReviews={initialReviews} />
