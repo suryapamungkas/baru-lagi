@@ -89,6 +89,21 @@ export function MarketplaceHeader() {
               </div>
             ))}
 
+            {/* Ecosystem Showcase Link */}
+            <div className="relative group py-1">
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById('ecosystem-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="text-white/80 hover:text-white transition-colors cursor-pointer"
+              >
+                EKOSISTEM
+              </button>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full" />
+            </div>
+
             {/* Trade In Link */}
             <button
               type="button"

@@ -7,6 +7,7 @@ import { CinematicHeroSection } from '@/components/cinematic/CinematicHeroSectio
 import { ProductsView } from './ProductsView';
 import { PromoBanners, TrustPromise, TestimonialsSection } from './DynamicSectionsClient';
 import { MarketplaceFooter } from '@/components/cinematic/MarketplaceFooter';
+import { HoverGridShowcase } from '@/components/cinematic/HoverGridShowcase';
 import { NewsletterModal } from '@/components/home/NewsletterModal';
 import { useModals, ProductData } from '@/context/ModalContext';
 
@@ -86,13 +87,16 @@ export function MarketplacePageClient({
           imageAlt="Array of smartwatches on dark surface"
           onPrimaryClick={() => setIsTradeInOpen(true)}
           onSecondaryClick={() => scrollToCatalog('All')}
-          nextSectionId="catalog-section"
+          nextSectionId="ecosystem-section"
           stats={[
             { label: 'APPRAISAL TIME', value: 'INSTANT QUOTE' },
             { label: 'SHIPPING KIT', value: 'FREE PREPAID BOX' },
             { label: 'CARBON AVOIDED', value: '91% CO2e REDUCED' },
           ]}
         />
+
+        {/* HOVER GRID SHOWCASE: EKOSISTEM & KURASI PILIHAN (Metalab/Codrops Multi-Image Reveal) */}
+        <HoverGridShowcase />
 
         {/* MARKETPLACE HARDWARE CATALOG */}
         <ProductsView initialProducts={initialProducts} />
