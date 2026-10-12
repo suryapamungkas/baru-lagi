@@ -2,11 +2,10 @@
 
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
-import { Star, ShoppingCart, Eye, Sparkles, Search, X, Box, LayoutGrid } from 'lucide-react';
+import { Star, ShoppingCart, Eye, Sparkles, Search, X } from 'lucide-react';
 import { useModals, ProductData } from '@/context/ModalContext';
 import { useCart } from '@/context/CartContext';
 import { motion } from 'framer-motion';
-import { ThreeDGridContentPreview } from '@/components/cinematic/ThreeDGridContentPreview';
 
 interface ProductsViewProps {
   initialProducts: ProductData[];
@@ -19,7 +18,6 @@ export function ProductsView({ initialProducts }: ProductsViewProps) {
   const [selectedBrand, setSelectedBrand] = useState('All');
   const [selectedConditionFilter, setSelectedConditionFilter] = useState('All');
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc'>('featured');
-  const [viewMode, setViewMode] = useState<'3d' | 'grid'>('3d');
 
   const filteredProducts = useMemo(() => {
     return initialProducts
@@ -154,37 +152,9 @@ export function ProductsView({ initialProducts }: ProductsViewProps) {
             </button>
           ))}
         </div>
-
-        {/* View Mode Toggle: 3D Grid Preview vs Standard Grid */}
-        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-white/5 border border-white/15">
-          <button
-            type="button"
-            onClick={() => setViewMode('3d')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-mono font-bold tracking-wider transition-all cursor-pointer ${
-              viewMode === '3d'
-                ? 'bg-white text-black shadow-lg'
-                : 'text-[#A0A0A0] hover:text-white'
-            }`}
-          >
-            <Box className="h-3.5 w-3.5" />
-            <span>3D MATRIX PREVIEW</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setViewMode('grid')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-mono font-bold tracking-wider transition-all cursor-pointer ${
-              viewMode === 'grid'
-                ? 'bg-white text-black shadow-lg'
-                : 'text-[#A0A0A0] hover:text-white'
-            }`}
-          >
-            <LayoutGrid className="h-3.5 w-3.5" />
-            <span>STANDARD GRID</span>
-          </button>
-        </div>
       </div>
 
-      {/* Products Display: 3D Matrix Preview or Standard Grid */}
+      {/* Products Display: Standard Grid */}
       {filteredProducts.length === 0 ? (
         <div className="text-center py-20 border border-dashed border-white/20 rounded-2xl bg-white/5">
           <p className="text-lg font-black uppercase tracking-wider text-white mb-2">No matching hardware units</p>
@@ -201,8 +171,6 @@ export function ProductsView({ initialProducts }: ProductsViewProps) {
             RESET FILTERS
           </button>
         </div>
-      ) : viewMode === '3d' ? (
-        <ThreeDGridContentPreview products={filteredProducts} />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProducts.map((product) => {

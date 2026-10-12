@@ -44,11 +44,9 @@ Website ini dirancang secara eksklusif dengan bahasa desain **Cinematic Dark Lux
 - **Manifesto Kolektif & Kolaborasi Laboratorium (*Brand Manifesto*)**:
   - Deklarasi visi ekonomi sirkular oleh Nur Hidayat Surya Pamungkas.
   - Rekam jejak kemitraan laboratorium diagnostik independen dan sorotan liputan pers nasional.
-- **Etalase Interaktif Multidimensi**:
-  - **3D Grid Content Preview**: Grid 3 dimensi interaktif dengan visualisasi kartu gawai.
+- **Etalase Interaktif Terkurasi & Ringan**:
   - **Hover Grid Showcase**: Efek multi-image reveal terkurasi untuk ekosistem perangkat.
-  - **Grid Layout Motion Showcase (Masterpiece Vault)**: Multi-plane 3D tilt dengan exploding detail preview.
-  - **Image Grid Motion Showcase (Lab Matrix)**: Dual-parallax floating hardware showcase.
+  - **Grid Layout Motion Showcase (Masterpiece Vault)**: Multi-plane tilt terkurasi dengan exploding detail preview.
 - **Katalog Produk Dinamis & Multi-Tier Grading**:
   - Filter kategori instan (MacBooks, Smartphones, iPads, Audio, Consoles).
   - Pilihan kondisi fisik transparan (*Fair*, *Good*, *Excellent*) dengan penyesuaian harga *real-time*.

@@ -9,7 +9,6 @@ import { PromoBanners, TrustPromise, TestimonialsSection, TestimonialsProps } fr
 import { MarketplaceFooter } from '@/components/cinematic/MarketplaceFooter';
 import { HoverGridShowcase } from '@/components/cinematic/HoverGridShowcase';
 import { GridLayoutMotionShowcase } from '@/components/cinematic/GridLayoutMotionShowcase';
-import { ImageGridMotionShowcase } from '@/components/cinematic/ImageGridMotionShowcase';
 import { LoadingCurtain } from '@/components/cinematic/LoadingCurtain';
 import { CuratedCapsulesSection } from '@/components/editorial/CuratedCapsulesSection';
 import { JournalSection } from '@/components/editorial/JournalSection';
@@ -121,9 +120,6 @@ export function MarketplacePageClient({
 
         {/* TRUST PILLARS (1-Year Warranty, 30-Day Returns, 25-Point Lab Inspection, Free Shipping) */}
         <TrustPromise />
-
-        {/* IMAGE GRID MOTION SHOWCASE: 25-POINT LAB MATRIX (Dual-Parallax Dynamic Floating Hardware) */}
-        <ImageGridMotionShowcase />
 
         {/* EDITORIAL CIRCULAR JOURNAL: IN-DEPTH STORIES & ESSAYS */}
         <JournalSection />
