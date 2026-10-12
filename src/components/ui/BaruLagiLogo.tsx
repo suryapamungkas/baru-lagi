@@ -101,7 +101,7 @@ export function BaruLagiLogo({
         <div className={`font-black uppercase leading-none text-white flex items-center gap-1 ${textSizes[size]}`}>
           <span>BARU</span>
           <span className="text-[#D6F479]">LAGI</span>
-          <span className="h-1.5 w-1.5 rounded-full bg-[#D6F479] animate-pulse" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#D6F479]" />
         </div>
         {showTagline && (
           <span className="text-[9px] font-mono tracking-[0.25em] text-[#A0A0A0] uppercase mt-1">

@@ -195,10 +195,10 @@ export function GridLayoutMotionShowcase() {
       gsap.to(imgEl, { duration: 1.2, ease: 'power1.out', x: tx, y: ty });
     }
 
-    // Title translation: [20, -20]
+    // Title translation: [8, -8]
     if (titleEl) {
-      const tx = ((20 - -20) / bounds.width) * relX + -20;
-      const ty = ((10 - -10) / bounds.height) * relY + -10;
+      const tx = ((8 - -8) / bounds.width) * relX + -8;
+      const ty = ((6 - -6) / bounds.height) * relY + -6;
       gsap.to(titleEl, { duration: 1.2, ease: 'power1.out', x: tx, y: ty });
     }
 
@@ -217,10 +217,10 @@ export function GridLayoutMotionShowcase() {
       gsap.to(shadowEl, { duration: 1.4, ease: 'power1.out', x: tx, y: ty });
     }
 
-    // Decorative glyph: [-20, 20]
+    // Decorative glyph: [-8, 8]
     if (decoEl) {
-      const tx = ((-20 - 20) / bounds.width) * relX + 20;
-      const rz = ((15 - -15) / bounds.width) * relX + -15;
+      const tx = ((-8 - 8) / bounds.width) * relX + 8;
+      const rz = ((8 - -8) / bounds.width) * relX + -8;
       gsap.to(decoEl, { duration: 1.3, ease: 'power1.out', x: tx, rotationZ: rz });
     }
 
@@ -481,18 +481,19 @@ export function GridLayoutMotionShowcase() {
                   </div>
                 </div>
 
-                {/* 4. Giant Outline Title with CSS Text-Stroke Fill (Exact Codrops box__title-inner[data-hover]) */}
-                <div className="motion-box-title motion-animatable absolute -bottom-5 -left-3 z-20 pointer-events-none">
+                {/* 4. Elegant Architectural Outline Title */}
+                <div className="motion-box-title motion-animatable absolute bottom-12 left-5 z-20 pointer-events-none flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-lime/80" />
                   <h3
                     data-hover={prod.title}
-                    className="editorial-outline-title font-black uppercase text-4xl sm:text-5xl tracking-tighter leading-none select-none"
+                    className="editorial-outline-title font-mono font-bold uppercase text-xs sm:text-sm tracking-[0.22em] leading-none select-none"
                   >
                     {prod.title}
                   </h3>
                 </div>
 
                 {/* 5. Decorative Glyph (Displaces on 3D tilt) */}
-                <div className="motion-box-deco motion-animatable absolute bottom-3 right-3 text-3xl font-black text-accent-lime/60 group-hover:text-accent-lime pointer-events-none z-10 transition-colors">
+                <div className="motion-box-deco motion-animatable absolute bottom-12 right-5 text-xs font-mono font-bold text-accent-lime/60 group-hover:text-accent-lime pointer-events-none z-10 transition-colors">
                   {prod.deco}
                 </div>
 
@@ -562,17 +563,17 @@ export function GridLayoutMotionShowcase() {
                   />
                 </div>
 
-                {/* Giant Title at bottom */}
+                {/* Refined Title at bottom */}
                 <div className="relative z-10 pt-4 border-t border-white/10 flex items-end justify-between">
                   <div>
-                    <span className="text-[10px] font-mono text-accent-lime uppercase tracking-widest block">
+                    <span className="text-[10px] font-mono text-accent-lime uppercase tracking-widest block mb-1">
                       ARSIP KURATOR RESMI
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-wider">
+                    <h3 className="text-xl sm:text-2xl font-mono font-bold uppercase text-white tracking-[0.2em]">
                       {activeItem.title}
                     </h3>
                   </div>
-                  <div className="text-4xl text-accent-lime font-black">
+                  <div className="text-2xl text-accent-lime font-mono font-bold">
                     {activeItem.deco}
                   </div>
                 </div>
@@ -680,7 +681,8 @@ export function GridLayoutMotionShowcase() {
         .editorial-outline-title {
           position: relative;
           color: transparent;
-          -webkit-text-stroke: 2px #ffffff;
+          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.65);
+          letter-spacing: 0.22em;
           transition: color 0.3s;
         }
         .editorial-outline-title::before {
@@ -693,7 +695,7 @@ export function GridLayoutMotionShowcase() {
           white-space: nowrap;
           -webkit-text-stroke: 0;
           color: #d6f479;
-          transition: height 0.3s ease-out;
+          transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .group:hover .editorial-outline-title::before {
           height: 100%;
