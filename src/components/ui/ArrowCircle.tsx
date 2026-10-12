@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 interface ArrowCircleProps {
   tone?: 'light' | 'dark' | 'lime';
   direction?: 'left' | 'right';

@@ -63,7 +63,7 @@ export function LoadingCurtain() {
       >
         {/* Col 1-3: Brand Name */}
         <div className="flex items-center gap-2 lg:col-span-3">
-          <span className="h-2 w-2 rounded-full bg-accent-lime animate-ping" />
+          <span className="h-2 w-2 rounded-full bg-accent-lime" />
           <span className="font-black text-white tracking-[0.25em]">BARULAGI</span>
           <span className="text-[#A0A0A0] text-[10px] hidden sm:inline">COLLECTIVE</span>
         </div>

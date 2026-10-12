@@ -7,6 +7,22 @@ import { useModals, ProductData } from '@/context/ModalContext';
 import { useCart } from '@/context/CartContext';
 import { motion } from 'framer-motion';
 
+function safeParseImages(imagesJson?: string): string[] {
+  try {
+    return JSON.parse(imagesJson || '["/hero.jpg"]');
+  } catch {
+    return ['/hero.jpg'];
+  }
+}
+
+function safeParseSpecs(specsJson?: string): Record<string, string> {
+  try {
+    return JSON.parse(specsJson || '{}');
+  } catch {
+    return {};
+  }
+}
+
 interface ProductsViewProps {
   initialProducts: ProductData[];
 }
@@ -174,8 +190,8 @@ export function ProductsView({ initialProducts }: ProductsViewProps) {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProducts.map((product) => {
-            const images: string[] = JSON.parse(product.images || '["/hero.jpg"]');
-            const specs = JSON.parse(product.specs || '{}');
+            const images = safeParseImages(product.images);
+            const specs = safeParseSpecs(product.specs);
             const prices = product.inventories.map((i) => i.price);
             const lowestPrice = prices.length > 0 ? Math.min(...prices) : product.basePrice;
             const totalStock = product.inventories.reduce((acc, curr) => acc + curr.stockQuantity, 0);

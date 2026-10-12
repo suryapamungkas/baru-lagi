@@ -17,6 +17,7 @@ interface CinematicHeroSectionProps {
   onSecondaryClick?: () => void;
   nextSectionId?: string;
   stats?: { label: string; value: string }[];
+  priority?: boolean;
 }
 
 export function CinematicHeroSection({
@@ -31,6 +32,7 @@ export function CinematicHeroSection({
   onSecondaryClick,
   nextSectionId,
   stats,
+  priority = false,
 }: CinematicHeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -69,7 +71,8 @@ export function CinematicHeroSection({
           fill
           sizes="100vw"
           className="object-cover object-center filter brightness-[0.75] contrast-[1.1]"
-          priority
+          priority={priority}
+          loading={priority ? undefined : 'lazy'}
         />
         {/* Dark radial and vertical gradient overlay for maximum text contrast */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60" />

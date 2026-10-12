@@ -1,11 +1,18 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
 import { ProductData, useModals } from '@/context/ModalContext';
 import { CollectionHeading } from './CollectionHeading';
 import { ArrowCircle } from '@/components/ui/ArrowCircle';
 import { ShieldCheck, ChevronRight } from 'lucide-react';
+
+function safeParseImages(imagesJson?: string): string[] {
+  try {
+    return JSON.parse(imagesJson || '["/hero.jpg"]');
+  } catch {
+    return ['/hero.jpg'];
+  }
+}
 
 interface CuratedCapsulesSectionProps {
   products: ProductData[];
@@ -100,7 +107,7 @@ export function CuratedCapsulesSection({ products }: CuratedCapsulesSectionProps
               {/* Endless / Smooth Horizontal Scroll Row (Isle Thorne ProductRow) */}
               <div className="scroll-row flex gap-4 pb-4 pt-2 -mx-2 px-2">
                 {matchingProds.map((prod) => {
-                  const images: string[] = JSON.parse(prod.images || '["/hero.jpg"]');
+                  const images = safeParseImages(prod.images);
                   const lowestPrice = Math.min(...prod.inventories.map((i) => i.price));
                   const condition = prod.inventories[0]?.condition || 'Grade A';
 

@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { ArrowCircle } from '@/components/ui/ArrowCircle';
 import { Newspaper, Handshake } from 'lucide-react';
 import { useModals } from '@/context/ModalContext';

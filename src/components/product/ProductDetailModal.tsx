@@ -7,6 +7,22 @@ import { useModals } from '@/context/ModalContext';
 import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/button';
 
+function safeParseImages(imagesJson?: string): string[] {
+  try {
+    return JSON.parse(imagesJson || '["/hero.jpg"]');
+  } catch {
+    return ['/hero.jpg'];
+  }
+}
+
+function safeParseSpecs(specsJson?: string): Record<string, string> {
+  try {
+    return JSON.parse(specsJson || '{}');
+  } catch {
+    return {};
+  }
+}
+
 export function ProductDetailModal() {
   const { quickViewProduct, setQuickViewProduct } = useModals();
   const { addToCart, setIsCartOpen, setIsCheckoutOpen } = useCart();
@@ -15,8 +31,8 @@ export function ProductDetailModal() {
 
   if (!quickViewProduct) return null;
 
-  const images: string[] = JSON.parse(quickViewProduct.images || '["/hero.jpg"]');
-  const specs = JSON.parse(quickViewProduct.specs || '{}');
+  const images = safeParseImages(quickViewProduct.images);
+  const specs = safeParseSpecs(quickViewProduct.specs);
 
   // Match inventory by selected condition or fall back to first
   const currentInventory = 

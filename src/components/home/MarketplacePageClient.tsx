@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
 import { MarketplaceHeader } from '@/components/cinematic/MarketplaceHeader';
 import { CinematicHeroSection } from '@/components/cinematic/CinematicHeroSection';
@@ -58,6 +57,7 @@ export function MarketplacePageClient({
           onPrimaryClick={() => scrollToCatalog('MacBooks')}
           onSecondaryClick={() => setIsTradeInOpen(true)}
           nextSectionId="hero-iphone"
+          priority={true}
           stats={[
             { label: 'PRICE SAVINGS', value: 'UP TO 70%' },
             { label: 'WARRANTY', value: '1-YEAR COMMERCIAL' },
