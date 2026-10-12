@@ -238,22 +238,7 @@ export function HoverGridShowcase() {
     },
   ];
 
-  // Clip path direction polygon calculation (faithful to HoverGrid-main)
-  const getClipPath = (direction: 'right' | 'left' | 'top' | 'bottom') => {
-    const clipPathDirections: Record<string, string> = {
-      right: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
-      left: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
-      top: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
-      bottom: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
-    };
-
-    return {
-      from: clipPathDirections[direction] || 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-      to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-    };
-  };
-
-  // Switch and animate active collection via GSAP clip-path wipe & zoom
+  // Switch and animate active collection via ultra-smooth GPU-composited motion
   const activateCollection = (newIndex: number) => {
     if (newIndex === activeIndex) return;
 
@@ -267,67 +252,84 @@ export function HoverGridShowcase() {
       currentTimelineRef.current.kill();
     }
 
-    const tl = gsap.timeline({ defaults: { duration: 0.92, ease: 'power4.out' } });
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    // 1. Animate Out previous elements
+    // 1. Smooth Fade-Out of previous collection
     if (prevEl) {
-      const prevImages = prevEl.querySelectorAll<HTMLElement>('.hovergrid-card');
-      const prevInners = prevEl.querySelectorAll<HTMLElement>('.hovergrid-card-inner');
+      const prevCards = prevEl.querySelectorAll<HTMLElement>('.hovergrid-card');
       const prevTitle = prevEl.querySelector<HTMLElement>('.hovergrid-bg-title');
 
-      tl.to(prevTitle, { opacity: 0, scale: 0.95, duration: 0.4 }, 0);
-      tl.to(prevInners, { scale: 1.45, duration: 0.6 }, 0);
+      gsap.killTweensOf([prevCards, prevTitle]);
+      tl.to(
+        prevCards,
+        {
+          opacity: 0,
+          scale: 0.96,
+          y: -10,
+          duration: 0.35,
+          ease: 'power2.inOut',
+          stagger: 0.04,
+        },
+        0
+      );
 
-      prevImages.forEach((card) => {
-        const dir = (card.dataset.dir || 'right') as 'right' | 'left' | 'top' | 'bottom';
-        tl.to(card, { clipPath: getClipPath(dir).from, duration: 0.6 }, 0);
-      });
+      if (prevTitle) {
+        tl.to(prevTitle, { opacity: 0, scale: 0.95, duration: 0.3 }, 0);
+      }
     }
 
-    // 2. Animate In new elements
+    // 2. Silky Fluid Reveal of new collection (Staggered & Hardware-Accelerated)
     if (nextEl) {
-      const nextImages = nextEl.querySelectorAll<HTMLElement>('.hovergrid-card');
+      const nextCards = nextEl.querySelectorAll<HTMLElement>('.hovergrid-card');
       const nextInners = nextEl.querySelectorAll<HTMLElement>('.hovergrid-card-inner');
       const nextTitle = nextEl.querySelector<HTMLElement>('.hovergrid-bg-title');
 
-      tl.fromTo(nextTitle, { opacity: 0, scale: 0.9 }, { opacity: 0.15, scale: 1 }, 0.1);
+      gsap.killTweensOf([nextCards, nextInners, nextTitle]);
 
-      nextImages.forEach((card) => {
-        const dir = (card.dataset.dir || 'right') as 'right' | 'left' | 'top' | 'bottom';
-        const clip = getClipPath(dir);
-        const randX = (Math.random() - 0.5) * 14;
-        const randY = (Math.random() - 0.5) * 14;
-
+      if (nextTitle) {
         tl.fromTo(
-          card,
-          {
-            xPercent: randX,
-            yPercent: randY,
-            filter: 'brightness(260%)',
-            clipPath: clip.from,
-          },
-          {
-            xPercent: 0,
-            yPercent: 0,
-            filter: 'brightness(100%)',
-            clipPath: clip.to,
-          },
-          0.1
+          nextTitle,
+          { opacity: 0, scale: 0.92, y: 15 },
+          { opacity: 0.12, scale: 1, y: 0, duration: 0.7, ease: 'power3.out' },
+          0.05
         );
-      });
+      }
 
-      tl.fromTo(nextInners, { scale: 1.45 }, { scale: 1 }, 0.1);
+      tl.fromTo(
+        nextCards,
+        {
+          opacity: 0,
+          scale: 0.94,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.65,
+          stagger: 0.08,
+          ease: 'power3.out',
+        },
+        0.08
+      );
+
+      tl.fromTo(
+        nextInners,
+        { scale: 1.12 },
+        { scale: 1, duration: 0.75, ease: 'power2.out', stagger: 0.08 },
+        0.08
+      );
     }
 
     currentTimelineRef.current = tl;
   };
 
-  // Debounced Hover handler to prevent jitter
+  // Debounced Hover handler for smooth response
   const handleMouseEnterItem = (index: number) => {
     if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
     hoverTimeoutRef.current = setTimeout(() => {
       activateCollection(index);
-    }, 40);
+    }, 45);
   };
 
   const handleMouseLeaveItem = () => {
@@ -338,30 +340,33 @@ export function HoverGridShowcase() {
   useEffect(() => {
     const firstEl = collectionRefs.current[0];
     if (firstEl) {
-      const firstImages = firstEl.querySelectorAll<HTMLElement>('.hovergrid-card');
+      const firstCards = firstEl.querySelectorAll<HTMLElement>('.hovergrid-card');
       const firstInners = firstEl.querySelectorAll<HTMLElement>('.hovergrid-card-inner');
       const firstTitle = firstEl.querySelector<HTMLElement>('.hovergrid-bg-title');
 
-      gsap.fromTo(
-        firstTitle,
-        { opacity: 0, scale: 0.9 },
-        { opacity: 0.15, scale: 1, duration: 1.1, ease: 'power4.out', delay: 0.2 }
+      const tl = gsap.timeline({ delay: 0.15 });
+
+      if (firstTitle) {
+        tl.fromTo(
+          firstTitle,
+          { opacity: 0, scale: 0.92, y: 15 },
+          { opacity: 0.12, scale: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+          0
+        );
+      }
+
+      tl.fromTo(
+        firstCards,
+        { opacity: 0, scale: 0.94, y: 22 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out' },
+        0.1
       );
 
-      firstImages.forEach((card) => {
-        const dir = (card.dataset.dir || 'right') as 'right' | 'left' | 'top' | 'bottom';
-        const clip = getClipPath(dir);
-        gsap.fromTo(
-          card,
-          { clipPath: clip.from, filter: 'brightness(220%)' },
-          { clipPath: clip.to, filter: 'brightness(100%)', duration: 1.1, ease: 'power4.out', delay: 0.2 }
-        );
-      });
-
-      gsap.fromTo(
+      tl.fromTo(
         firstInners,
-        { scale: 1.45 },
-        { scale: 1, duration: 1.1, ease: 'power4.out', delay: 0.2 }
+        { scale: 1.12 },
+        { scale: 1, duration: 0.8, stagger: 0.08, ease: 'power2.out' },
+        0.1
       );
     }
 
@@ -537,9 +542,8 @@ export function HoverGridShowcase() {
                 {col.cards.map((card, cardIdx) => (
                   <div
                     key={cardIdx}
-                    data-dir={card.direction}
                     onClick={() => handleCollectionAction(col)}
-                    className="hovergrid-card group/card relative rounded-2xl overflow-hidden border border-white/20 bg-neutral-900/90 shadow-2xl cursor-pointer will-change-[clip-path,filter,transform] transition-colors duration-300 hover:border-accent-lime hover:shadow-[0_15px_40px_rgba(214,244,121,0.2)]"
+                    className="hovergrid-card group/card relative rounded-2xl overflow-hidden border border-white/15 bg-neutral-900/90 shadow-2xl cursor-pointer will-change-transform transition-all duration-300 ease-out hover:border-accent-lime/60 hover:shadow-[0_20px_45px_rgba(214,244,121,0.22)] hover:scale-[1.025] hover:-translate-y-1"
                     style={{
                       gridArea: card.gridArea,
                     }}
