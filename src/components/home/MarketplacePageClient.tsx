@@ -9,6 +9,7 @@ import { MarketplaceFooter } from '@/components/cinematic/MarketplaceFooter';
 import { HoverGridShowcase } from '@/components/cinematic/HoverGridShowcase';
 import { GridLayoutMotionShowcase } from '@/components/cinematic/GridLayoutMotionShowcase';
 import { LoadingCurtain } from '@/components/cinematic/LoadingCurtain';
+import { TiltedArchiveSection } from '@/components/cinematic/TiltedArchiveSection';
 import { CuratedCapsulesSection } from '@/components/editorial/CuratedCapsulesSection';
 import { JournalSection } from '@/components/editorial/JournalSection';
 import { ManifestoSection } from '@/components/editorial/ManifestoSection';
@@ -95,13 +96,16 @@ export function MarketplacePageClient({
           imageAlt="Array of smartwatches on dark surface"
           onPrimaryClick={() => setIsTradeInOpen(true)}
           onSecondaryClick={() => scrollToCatalog('All')}
-          nextSectionId="capsules-section"
+          nextSectionId="archive-reel-section"
           stats={[
             { label: 'APPRAISAL TIME', value: 'INSTANT QUOTE' },
             { label: 'SHIPPING KIT', value: 'FREE PREPAID BOX' },
             { label: 'CARBON AVOIDED', value: '91% CO2e REDUCED' },
           ]}
         />
+
+        {/* TILTED GRID HERO: CURVED ARCHIVE REEL OF CATALOG DEVICES */}
+        <TiltedArchiveSection />
 
         {/* CURATED CAPSULES: ISLE THORNE COLLECTIVE NUMBERED ARCHIVE */}
         <CuratedCapsulesSection products={initialProducts} />
