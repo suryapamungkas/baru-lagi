@@ -37,7 +37,7 @@ export function TiltedArchiveSection() {
         fade={14}
         className="h-[560px] sm:h-[640px] w-full"
       >
-        <div className="relative z-10 flex h-full flex-col items-center justify-between py-14 sm:py-16 text-center pointer-events-none">
+        <div className="relative z-30 flex h-full flex-col items-center justify-between py-14 sm:py-16 text-center pointer-events-none">
           <div className="px-6">
             <span className="block text-[10px] sm:text-xs font-mono font-bold tracking-[0.25em] uppercase text-accent-lime mb-3">
               ARSIP BERGERAK &bull; 11 UNIT TERKURASI
