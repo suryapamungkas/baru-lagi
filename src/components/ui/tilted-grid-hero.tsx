@@ -19,7 +19,10 @@ import { cn } from "@/lib/utils";
 const SLICES = 16;
 
 // Camera distance from the screen, as a multiple of the cylinder's radius.
-const CAMERA = 1.6;
+// Set to 2.0 to ensure tiles always remain in front of the camera plane
+// (min distance strictly positive across the entire 360° orbit),
+// eliminating near-plane clipping, polygon inversion, and edge blowups.
+const CAMERA = 2.0;
 
 /**
  * Cylinder radius, as a share of the hero's width, that puts the frame's
@@ -63,8 +66,8 @@ function measure(
   const pitch = (aspect + gap / 100) * unit;
   const tileArc = aspect * unit;
 
-  // Fully off-screen threshold: edge bend + safe clearance of tile geometry
-  const limit = deg(bend) + tileArc * 0.85;
+  // Fully off-screen threshold: edge bend + safe clearance of half tile arc + 2 degrees
+  const limit = deg(bend) + tileArc * 0.5 + 2;
 
   // Ensure enough columns to span the entire screen plus ample off-screen margins
   const minColsNeeded = Math.ceil((2 * limit) / pitch) + 2;
@@ -81,7 +84,7 @@ function measure(
 
   const round = (n: number) => +n.toFixed(4);
   const sweep = round((columns * pitch) / 2);
-  const safeLimit = round(Math.min(sweep - pitch * 0.5, limit));
+  const safeLimit = round(Math.min(sweep - pitch * 0.25, limit));
   const hide = round(Math.max(0, ((sweep - safeLimit) / (2 * sweep || 1)) * 100));
 
   return {
@@ -111,9 +114,9 @@ export type TiltedGridHeroProps = {
   gap?: number;
   /** Vertical center of the row, as percentage of container height. @default 55 */
   axis?: number;
-  /** Curve angle at the frame edge in degrees (5–85). @default 80 */
+  /** Curve angle at the frame edge in degrees (5–85). @default 68 */
   curve?: number;
-  /** Width percentage of the gradient fade at edges. @default 14 */
+  /** Width percentage of the gradient fade at edges. @default 15 */
   fade?: number;
   /** Content rendered above the cylinder band. */
   children?: React.ReactNode;
@@ -127,8 +130,8 @@ export function TiltedGridHero({
   aspectRatio = 16 / 9,
   gap = 6,
   axis = 55,
-  curve = 80,
-  fade = 14,
+  curve = 68,
+  fade = 15,
   children,
   className,
   ...props
@@ -217,11 +220,11 @@ export function TiltedGridHero({
       {/* Obsidian lateral vignettes: guarantees butter-smooth edge fade into #000000 on all GPU pipelines */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 z-20 w-24 sm:w-40 md:w-56 bg-gradient-to-r from-black via-black/85 to-transparent"
+        className="pointer-events-none absolute inset-y-0 left-0 z-20 w-28 sm:w-44 md:w-64 bg-gradient-to-r from-black via-black/85 to-transparent"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 z-20 w-24 sm:w-40 md:w-56 bg-gradient-to-l from-black via-black/85 to-transparent"
+        className="pointer-events-none absolute inset-y-0 right-0 z-20 w-28 sm:w-44 md:w-64 bg-gradient-to-l from-black via-black/85 to-transparent"
       />
 
       {/* Top & bottom gentle vignettes for editorial text contrast */}
@@ -272,14 +275,14 @@ export function TiltedGridHero({
                 <div
                   key={k}
                   className={cn(
-                    "absolute top-0 overflow-hidden bg-neutral-950",
-                    k === 0 && "rounded-l-xl",
-                    k === SLICES - 1 && "rounded-r-xl",
+                    "absolute top-0 overflow-hidden bg-[#0d0d12]",
+                    k === 0 && "rounded-l-2xl",
+                    k === SLICES - 1 && "rounded-r-2xl",
                   )}
                   style={{
                     left: u((aspectRatio - share) / 2),
                     // Subpixel overlap with border-box to eliminate hairlines without z-fighting
-                    width: `calc(${u(share)} + 0.6px)`,
+                    width: k === SLICES - 1 ? u(share) : `calc(${u(share)} + 1px)`,
                     height: u(1),
                     transform: turn(
                       (aspectRatio / 2 - (k + 0.5) * share) * unit,
@@ -307,6 +310,16 @@ export function TiltedGridHero({
                       }}
                     />
                   ) : null}
+
+                  {/* Subtle luxury chassis rim border overlay */}
+                  <div
+                    aria-hidden
+                    className={cn(
+                      "pointer-events-none absolute inset-0 border-y border-white/[0.12]",
+                      k === 0 && "border-l border-white/[0.12] rounded-l-2xl",
+                      k === SLICES - 1 && "border-r border-white/[0.12] rounded-r-2xl",
+                    )}
+                  />
                 </div>
               ))}
             </div>

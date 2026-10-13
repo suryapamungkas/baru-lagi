@@ -33,8 +33,9 @@ export function TiltedArchiveSection() {
         images={ARCHIVE_IMAGES}
         speed={4.5}
         tileHeight={28}
-        axis={55}
-        fade={14}
+        curve={68}
+        axis={54}
+        fade={15}
         className="h-[560px] sm:h-[640px] w-full"
       >
         <div className="relative z-30 flex h-full flex-col items-center justify-between py-14 sm:py-16 text-center pointer-events-none">
