@@ -45,11 +45,23 @@ export function CinematicHeroSection({
   const yBg = useTransform(scrollYProgress, [0, 1], ['-8%', '8%']);
   const scaleBg = useTransform(scrollYProgress, [0, 1], [1.06, 1.0]);
 
+  // Smooth scroll exit fade: ensures buttons and text fade gracefully to pure black
+  // when scrolling away, completely preventing buttons from sticking or peeking into adjacent sections
+  const contentOpacity = useTransform(scrollYProgress, [0.1, 0.35, 0.78, 0.94], [0, 1, 1, 0]);
+  const contentY = useTransform(scrollYProgress, [0.1, 0.35, 0.78, 0.94], [30, 0, 0, -30]);
+
   const scrollToNext = () => {
     if (nextSectionId) {
       const el = document.getElementById(nextSectionId);
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
+        const customWin = window as unknown as {
+          __lenis?: { scrollTo: (target: HTMLElement | string, opts?: object) => void };
+        };
+        if (customWin.__lenis) {
+          customWin.__lenis.scrollTo(el, { offset: -70, duration: 1.2 });
+        } else {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     }
   };
@@ -58,7 +70,7 @@ export function CinematicHeroSection({
     <section
       id={id}
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden bg-black text-white select-none snap-start border-b border-white/10"
+      className="relative h-screen w-full overflow-hidden bg-black text-white select-none snap-start border-b border-white/10 scroll-mt-20"
     >
       {/* Parallax Background Layer */}
       <motion.div
@@ -79,8 +91,17 @@ export function CinematicHeroSection({
         <div className="absolute inset-0 bg-radial from-transparent to-black/70" />
       </motion.div>
 
-      {/* Foreground Content: Scroll-triggered Reveal (Fade & Slide-up) */}
-      <div className="relative z-10 flex h-full w-full flex-col justify-end px-6 pb-20 sm:px-12 md:px-20 lg:px-24">
+      {/* Obsidian bottom transition vignette */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-36 bg-gradient-to-t from-black via-black/85 to-transparent"
+      />
+
+      {/* Foreground Content: Scroll-triggered Reveal with Exit Fade */}
+      <motion.div
+        style={{ opacity: contentOpacity, y: contentY }}
+        className="relative z-20 flex h-full w-full flex-col justify-end px-6 pb-20 sm:px-12 md:px-20 lg:px-24"
+      >
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -167,16 +188,16 @@ export function CinematicHeroSection({
             )}
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Subtle Scroll Down Arrow */}
       {nextSectionId && (
         <motion.button
           onClick={scrollToNext}
+          style={{ opacity: contentOpacity }}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 8, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{
-            opacity: { duration: 1 },
             y: { duration: 1.8, repeat: Infinity, ease: 'easeInOut' },
           }}
           className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 text-white/60 hover:text-white transition-colors cursor-pointer p-2"

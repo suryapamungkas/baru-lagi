@@ -24,26 +24,38 @@ export function TiltedArchiveSection() {
 
   const openCatalog = () => {
     setActiveCategory('All');
-    document.getElementById('catalog-section')?.scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById('catalog-section');
+    if (el) {
+      const customWin = window as unknown as {
+        __lenis?: { scrollTo: (target: HTMLElement | string, opts?: object) => void };
+      };
+      if (customWin.__lenis) {
+        customWin.__lenis.scrollTo(el, { offset: -70, duration: 1.2 });
+      } else {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   return (
-    <section id="archive-reel-section" className="relative bg-black text-white border-b border-white/10">
+    <section
+      id="archive-reel-section"
+      className="relative min-h-screen w-full bg-black text-white border-b border-white/10 flex flex-col justify-center scroll-mt-20 overflow-hidden snap-start"
+    >
       <TiltedGridHero
         images={ARCHIVE_IMAGES}
         speed={4.5}
-        tileHeight={28}
+        tileHeight={27}
         curve={68}
-        axis={54}
-        fade={15}
-        className="h-[560px] sm:h-[640px] w-full"
+        axis={52}
+        className="h-screen min-h-[640px] max-h-[1080px] w-full"
       >
-        <div className="relative z-30 flex h-full flex-col items-center justify-between py-14 sm:py-16 text-center pointer-events-none">
+        <div className="relative z-30 flex h-full flex-col items-center justify-between py-16 sm:py-20 md:py-24 text-center pointer-events-none">
           <div className="px-6">
             <span className="block text-[10px] sm:text-xs font-mono font-bold tracking-[0.25em] uppercase text-accent-lime mb-3">
               ARSIP BERGERAK &bull; 11 UNIT TERKURASI
             </span>
-            <h2 className="text-balance text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
+            <h2 className="text-balance text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white">
               Setiap gawai,
               <br />
               kembali ke performa puncak.
@@ -57,10 +69,10 @@ export function TiltedArchiveSection() {
             <button
               type="button"
               onClick={openCatalog}
-              className="pointer-events-auto group inline-flex items-center gap-2 border border-white px-6 py-3 text-xs font-mono font-bold uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-lime"
+              className="pointer-events-auto group inline-flex items-center gap-2 border border-white px-7 py-3.5 text-xs font-mono font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-lime active:scale-95"
             >
               Lihat Katalog
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>
         </div>

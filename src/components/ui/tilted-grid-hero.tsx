@@ -66,8 +66,9 @@ function measure(
   const pitch = (aspect + gap / 100) * unit;
   const tileArc = aspect * unit;
 
-  // Fully off-screen threshold: edge bend + safe clearance of half tile arc + 2 degrees
-  const limit = deg(bend) + tileArc * 0.5 + 2;
+  // Fully off-screen threshold: edge bend + safe clearance of tile arc + 10 degrees buffer
+  // This guarantees tiles spawn and despawn hundreds of pixels beyond the viewport frame
+  const limit = deg(bend) + tileArc * 0.75 + 10;
 
   // Ensure enough columns to span the entire screen plus ample off-screen margins
   const minColsNeeded = Math.ceil((2 * limit) / pitch) + 2;
@@ -84,7 +85,7 @@ function measure(
 
   const round = (n: number) => +n.toFixed(4);
   const sweep = round((columns * pitch) / 2);
-  const safeLimit = round(Math.min(sweep - pitch * 0.25, limit));
+  const safeLimit = round(Math.min(sweep - pitch * 0.2, limit));
   const hide = round(Math.max(0, ((sweep - safeLimit) / (2 * sweep || 1)) * 100));
 
   return {
@@ -131,6 +132,7 @@ export function TiltedGridHero({
   gap = 6,
   axis = 55,
   curve = 68,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   fade = 15,
   children,
   className,
@@ -195,17 +197,15 @@ export function TiltedGridHero({
 
   const share = aspectRatio / SLICES;
   const duration = columns * speed;
-  const mask = `linear-gradient(90deg,transparent,#000 ${fade}%,#000 ${
-    100 - fade
-  }%,transparent)`;
 
   // Keyframes with smooth off-screen visibility and opacity transitions
+  // A gentle 2.5% opacity transition window guarantees tiles enter and exit seamlessly without popping
   const css =
     `@keyframes ${orbit}{` +
     `from{transform:${turn(-sweep)}}` +
     `to{transform:${turn(sweep)}}` +
     `0%,${hide}%,${100 - hide}%,100%{visibility:hidden;opacity:0}` +
-    `${hide + 0.05}%,${100 - hide - 0.05}%{visibility:visible;opacity:1}}` +
+    `${+(hide + 2.5).toFixed(2)}%,${+(100 - hide - 2.5).toFixed(2)}%{visibility:visible;opacity:1}}` +
     `@media(prefers-reduced-motion:reduce){.${tile}{animation-play-state:paused}}`;
 
   return (
@@ -217,36 +217,15 @@ export function TiltedGridHero({
     >
       <style>{css}</style>
 
-      {/* Obsidian lateral vignettes: guarantees butter-smooth edge fade into #000000 on all GPU pipelines */}
+      {/* Cylindrical 3D perspective stage: unflattened true 3D spatial compositing without clipping masks */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 z-20 w-28 sm:w-44 md:w-64 bg-gradient-to-r from-black via-black/85 to-transparent"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 z-20 w-28 sm:w-44 md:w-64 bg-gradient-to-l from-black via-black/85 to-transparent"
-      />
-
-      {/* Top & bottom gentle vignettes for editorial text contrast */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-24 bg-gradient-to-b from-black via-black/60 to-transparent"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-28 bg-gradient-to-t from-black via-black/70 to-transparent"
-      />
-
-      {/* Cylindrical 3D perspective stage */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 transition-opacity duration-700"
+        className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-700"
         style={{
           opacity: layout ? 1 : 0,
           perspective: `${+(r * CAMERA).toFixed(3)}cqw`,
           perspectiveOrigin: `50% ${axis}%`,
-          maskImage: mask,
-          WebkitMaskImage: mask,
+          transformStyle: "preserve-3d",
         }}
       >
         {Array.from({ length: columns }, (_, t) => {
@@ -267,7 +246,7 @@ export function TiltedGridHero({
                 transformStyle: "preserve-3d",
                 WebkitBackfaceVisibility: "hidden",
                 backfaceVisibility: "hidden",
-                willChange: "transform",
+                willChange: "transform, opacity",
                 animation: `${orbit} ${duration}s linear ${-t * speed}s infinite`,
               }}
             >
@@ -326,6 +305,26 @@ export function TiltedGridHero({
           );
         })}
       </div>
+
+      {/* Obsidian lateral vignettes on top of the 3D stage (z-20): guarantees 100% butter-smooth fade into pure #000000 on both left and right edges */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-0 z-20 w-44 sm:w-64 md:w-80 lg:w-[440px] bg-gradient-to-r from-black via-black via-black/95 via-black/60 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 z-20 w-44 sm:w-64 md:w-80 lg:w-[440px] bg-gradient-to-l from-black via-black via-black/95 via-black/60 to-transparent"
+      />
+
+      {/* Top & bottom gentle vignettes for editorial text contrast */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-28 bg-gradient-to-b from-black via-black/75 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-32 bg-gradient-to-t from-black via-black/80 to-transparent"
+      />
 
       {children}
     </div>
