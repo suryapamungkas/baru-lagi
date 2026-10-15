@@ -15,6 +15,7 @@ import { JournalSection } from '@/components/editorial/JournalSection';
 import { ManifestoSection } from '@/components/editorial/ManifestoSection';
 import { NewsletterModal } from '@/components/home/NewsletterModal';
 import { useModals, ProductData } from '@/context/ModalContext';
+import { scrollToLenis } from '@/lib/utils';
 
 interface MarketplacePageClientProps {
   initialProducts: ProductData[];
@@ -31,10 +32,7 @@ export function MarketplacePageClient({
     if (category) {
       setActiveCategory(category);
     }
-    const el = document.getElementById('catalog-section');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollToLenis('catalog-section', { offset: -70 });
   };
 
   return (

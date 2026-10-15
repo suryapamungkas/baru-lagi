@@ -29,6 +29,194 @@ export interface HoverGridCollection {
   cards: HoverGridCard[];
 }
 
+// Curated tech ecosystems representing the best of BaruLagi refurbished hardware
+const COLLECTIONS: HoverGridCollection[] = [
+  {
+    id: 'apple-suite',
+    number: '01',
+    name: 'APPLE SILICON & STUDIO',
+    bgTitle: 'APPLE PRO',
+    tagline: 'Koleksi komputasi M2 Pro & gawai mobile terpadu dengan baterai prima >90%.',
+    categoryFilter: 'MacBooks',
+    ambientGlow: 'rgba(148, 163, 184, 0.14)',
+    accentColor: '#FFFFFF',
+    cards: [
+      {
+        title: 'MacBook Pro 14" M2',
+        specs: '16GB RAM • 512GB SSD',
+        priceTag: 'MULAI $1,399',
+        image: '/cinematic_macbook.jpg',
+        gridArea: '1 / 1 / 5 / 5',
+        direction: 'right',
+        badge: 'GRADE A+ CERTIFIED',
+      },
+      {
+        title: 'iPhone 13 Pro',
+        specs: 'Super Retina XDR • 120Hz',
+        priceTag: 'MULAI $579',
+        image: '/cinematic_iphone.jpg',
+        gridArea: '1 / 5 / 6 / 8',
+        direction: 'top',
+        badge: 'KONDISI SEMPURNA',
+      },
+      {
+        title: 'Apple Watch Ultra 2',
+        specs: 'Titanium 49mm • GPS+Cell',
+        priceTag: 'MULAI $649',
+        image: '/watch_ultra.jpg',
+        gridArea: '5 / 1 / 9 / 3',
+        direction: 'bottom',
+        badge: 'BATERAI 100%',
+      },
+      {
+        title: 'AirPods Pro 2',
+        specs: 'USB-C ANC • Audio Spasial',
+        priceTag: 'MULAI $189',
+        image: '/airpods.jpg',
+        gridArea: '6 / 5 / 10 / 8',
+        direction: 'left',
+        badge: 'HIGIENIS DISANITASI',
+      },
+    ],
+  },
+  {
+    id: 'samsung-ecosystem',
+    number: '02',
+    name: 'SAMSUNG GALAXY ULTRA SUITE',
+    bgTitle: 'GALAXY AI',
+    tagline: 'Performa fotografi 200MP, layar Dynamic AMOLED 2X, dan audio resolusi tinggi.',
+    categoryFilter: 'Smartphones',
+    ambientGlow: 'rgba(56, 189, 248, 0.14)',
+    accentColor: '#38BDF8',
+    cards: [
+      {
+        title: 'Galaxy S24 Ultra',
+        specs: 'Titanium Gray • 512GB • AI',
+        priceTag: 'MULAI $889',
+        image: '/galaxy_s24.jpg',
+        gridArea: '1 / 1 / 6 / 5',
+        direction: 'right',
+        badge: 'GRADE A+ SCREEN',
+      },
+      {
+        title: 'Sony WH-1000XM5',
+        specs: 'Industry-Leading ANC',
+        priceTag: 'MULAI $279',
+        image: '/headphones_xm5.jpg',
+        gridArea: '1 / 5 / 5 / 8',
+        direction: 'top',
+        badge: 'AUDIOPHILE TUNED',
+      },
+      {
+        title: 'iPad Air M1',
+        specs: 'Layar Liquid Retina 10.9"',
+        priceTag: 'MULAI $459',
+        image: '/ipad.jpg',
+        gridArea: '6 / 1 / 10 / 4',
+        direction: 'bottom',
+        badge: 'SUPPORT PENCIL 2',
+      },
+      {
+        title: 'Baterai & Lab QC',
+        specs: '25-Titik Inspeksi Standar',
+        priceTag: 'TERSERTIFIKASI',
+        image: '/journal_diagnostics.jpg',
+        gridArea: '5 / 5 / 10 / 8',
+        direction: 'left',
+        badge: 'ZERO DEFECTS',
+      },
+    ],
+  },
+  {
+    id: 'gaming-beasts',
+    number: '03',
+    name: 'PORTABLE GAMING & RIGS',
+    bgTitle: 'NEXT-GEN',
+    tagline: 'Layar OLED 90Hz dan grafis komputasi konsol generasi terkini di mana pun Anda berada.',
+    categoryFilter: 'Consoles',
+    ambientGlow: 'rgba(214, 244, 121, 0.14)',
+    accentColor: '#D6F479',
+    cards: [
+      {
+        title: 'Steam Deck OLED',
+        specs: '1TB NVMe • Layar 90Hz HDR',
+        priceTag: 'MULAI $499',
+        image: '/steam_deck.jpg',
+        gridArea: '1 / 1 / 5 / 5',
+        direction: 'top',
+        badge: 'OLED TERBAIK',
+      },
+      {
+        title: 'Nintendo Switch OLED',
+        specs: '64GB Internal • White Joy-Con',
+        priceTag: 'MULAI $269',
+        image: '/switch_oled.jpg',
+        gridArea: '1 / 5 / 6 / 8',
+        direction: 'right',
+        badge: 'SIAP MAINKAN',
+      },
+      {
+        title: 'PlayStation 5 Disc',
+        specs: '4K 120Hz Ray Tracing • 825GB',
+        priceTag: 'MULAI $419',
+        image: '/console.jpg',
+        gridArea: '5 / 1 / 10 / 4',
+        direction: 'bottom',
+        badge: 'DUALSENSE PRIMA',
+      },
+      {
+        title: 'Sony WH-1000XM5',
+        specs: 'Spatial Gaming Audio',
+        priceTag: 'MULAI $279',
+        image: '/headphones_xm5.jpg',
+        gridArea: '6 / 5 / 10 / 8',
+        direction: 'left',
+        badge: 'LATENSI RENDAH',
+      },
+    ],
+  },
+  {
+    id: 'tradein-circular',
+    number: '04',
+    name: 'TUKAR TAMBAH & SIRKULARITAS',
+    bgTitle: 'CASH OUT',
+    tagline: 'Cairkan dana tunai instan untuk gawai lama Anda dan kurangi emisi karbon sirkular.',
+    categoryFilter: 'All',
+    isAction: true,
+    ambientGlow: 'rgba(168, 85, 247, 0.14)',
+    accentColor: '#A855F7',
+    cards: [
+      {
+        title: 'Appraisal Otomatis',
+        specs: 'Valuasi AI dalam 60 Detik',
+        priceTag: 'HARGA PASAR TERTINGGI',
+        image: '/promo1.jpg',
+        gridArea: '1 / 1 / 6 / 4',
+        direction: 'top',
+        badge: 'JAMINAN HARGA',
+      },
+      {
+        title: 'Jejak Karbon Hijau',
+        specs: 'Hemat 91% Emisi CO2e Pabrik',
+        priceTag: 'SIRKULAR LESTARI',
+        image: '/journal_carbon.jpg',
+        gridArea: '1 / 4 / 6 / 8',
+        direction: 'left',
+        badge: 'RAMAH BUMI',
+      },
+      {
+        title: 'Pengiriman Gratis',
+        specs: 'Gratis Kotak Pengiriman Aman',
+        priceTag: 'CASH OUT INSTAN',
+        image: '/promo2.jpg',
+        gridArea: '6 / 2 / 11 / 5',
+        direction: 'right',
+        badge: 'PENCAIRAN CEPAT',
+      },
+    ],
+  },
+];
+
 export function HoverGridShowcase() {
   const containerRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -38,205 +226,6 @@ export function HoverGridShowcase() {
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const { setActiveCategory, setIsTradeInOpen } = useModals();
-
-  // Curated tech ecosystems representing the best of BaruLagi refurbished hardware
-  const collections: HoverGridCollection[] = [
-    {
-      id: 'apple-suite',
-      number: '01',
-      name: 'APPLE SILICON & STUDIO',
-      bgTitle: 'APPLE PRO',
-      tagline: 'Koleksi komputasi M2 Pro & gawai mobile terpadu dengan baterai prima >90%.',
-      categoryFilter: 'MacBooks',
-      ambientGlow: 'rgba(148, 163, 184, 0.14)',
-      accentColor: '#FFFFFF',
-      cards: [
-        {
-          title: 'MacBook Pro 14" M2',
-          specs: '16GB RAM • 512GB SSD',
-          priceTag: 'MULAI $1,399',
-          image: '/cinematic_macbook.jpg',
-          gridArea: '1 / 1 / 5 / 5',
-          direction: 'right',
-          badge: 'GRADE A+ CERTIFIED',
-        },
-        {
-          title: 'iPhone 13 Pro',
-          specs: 'Super Retina XDR • 120Hz',
-          priceTag: 'MULAI $499',
-          image: '/cinematic_iphone.jpg',
-          gridArea: '5 / 8 / 10 / 11',
-          direction: 'left',
-          badge: 'BATTERY 94%',
-        },
-        {
-          title: 'Apple Watch Series 8',
-          specs: '45mm GPS • Midnight',
-          priceTag: 'MULAI $249',
-          image: '/promo2.jpg',
-          gridArea: '8 / 3 / 11 / 5',
-          direction: 'top',
-          badge: 'ORIGINAL CHARGER',
-        },
-      ],
-    },
-    {
-      id: 'gaming-suite',
-      number: '02',
-      name: 'PORTABLE GAMING & HYBRID',
-      bgTitle: 'NEXT-GEN PLAY',
-      tagline: 'Konsol genggam panel 90Hz OLED & grafis komputasi tinggi untuk mobilitas gaming.',
-      categoryFilter: 'Consoles',
-      ambientGlow: 'rgba(168, 85, 247, 0.16)',
-      accentColor: '#A855F7',
-      cards: [
-        {
-          title: 'Valve Steam Deck OLED (1TB)',
-          specs: '7.4" 90Hz HDR • Zen 2 APU',
-          priceTag: 'MULAI $499',
-          image: '/steam_deck.jpg',
-          gridArea: '3 / 5 / 8 / 10',
-          direction: 'bottom',
-          badge: 'HDR OLED 90Hz',
-        },
-        {
-          title: 'Nintendo Switch OLED',
-          specs: '7.0" OLED • 64GB Audio Enhanced',
-          priceTag: 'MULAI $279',
-          image: '/switch_oled.jpg',
-          gridArea: '7 / 4 / 10 / 7',
-          direction: 'right',
-          badge: 'FULL ACCESSORIES',
-        },
-        {
-          title: 'PlayStation 5 Digital',
-          specs: 'Custom RDNA 2 • 825GB SSD',
-          priceTag: 'MULAI $389',
-          image: '/console.jpg',
-          gridArea: '2 / 2 / 4 / 4',
-          direction: 'right',
-          badge: 'DUALSENSE INCLUDED',
-        },
-      ],
-    },
-    {
-      id: 'audio-suite',
-      number: '03',
-      name: 'ACOUSTIC SILENCE & STUDIO',
-      bgTitle: 'PURE ACOUSTICS',
-      tagline: 'Peredam bising adaptif industri dan sertifikasi driver suara bebas distorsi.',
-      categoryFilter: 'Audio',
-      ambientGlow: 'rgba(245, 158, 11, 0.14)',
-      accentColor: '#F59E0B',
-      cards: [
-        {
-          title: 'Sony WH-1000XM5 ANC',
-          specs: 'Dual Processor V1 • LDAC Hi-Res',
-          priceTag: 'MULAI $289',
-          image: '/headphones_xm5.jpg',
-          gridArea: '8 / 2 / 11 / 5',
-          direction: 'right',
-          badge: 'ACTIVE NOISE CANCEL',
-        },
-        {
-          title: 'AirPods Pro 2nd Gen',
-          specs: 'H2 Chip • MagSafe Type-C',
-          priceTag: 'MULAI $179',
-          image: '/airpods.jpg',
-          gridArea: '2 / 8 / 8 / 11',
-          direction: 'bottom',
-          badge: 'SPATIAL AUDIO',
-        },
-        {
-          title: 'MacBook Studio Acoustics',
-          specs: '6-Speaker Sound System',
-          priceTag: 'TERPADU M2',
-          image: '/hero.jpg',
-          gridArea: '3 / 3 / 6 / 6',
-          direction: 'left',
-          badge: 'DOLBY ATMOS',
-        },
-      ],
-    },
-    {
-      id: 'mobility-suite',
-      number: '04',
-      name: 'TITANIUM OPTICS & MOBILITY',
-      bgTitle: 'ULTRA MOBILITY',
-      tagline: 'Struktur titanium aerospace, kamera 200MP & produktivitas tablet pena Apple Pencil.',
-      categoryFilter: 'Smartphones',
-      ambientGlow: 'rgba(56, 189, 248, 0.14)',
-      accentColor: '#38BDF8',
-      cards: [
-        {
-          title: 'Samsung Galaxy S24 Ultra',
-          specs: 'Snapdragon 8 Gen 3 • 200MP Quad',
-          priceTag: 'MULAI $949',
-          image: '/galaxy_s24.jpg',
-          gridArea: '7 / 7 / 10 / 9',
-          direction: 'left',
-          badge: 'TITANIUM FRAME',
-        },
-        {
-          title: 'Apple Watch Ultra 2',
-          specs: '49mm Titanium • 3000 Nits',
-          priceTag: 'MULAI $629',
-          image: '/watch_ultra.jpg',
-          gridArea: '4 / 1 / 10 / 4',
-          direction: 'right',
-          badge: 'PRECISION GPS',
-        },
-        {
-          title: 'iPad Air 5th Gen M1',
-          specs: 'Liquid Retina • Gen 2 Pencil',
-          priceTag: 'MULAI $439',
-          image: '/ipad.jpg',
-          gridArea: '2 / 5 / 6 / 9',
-          direction: 'right',
-          badge: 'M1 MULTITASKING',
-        },
-      ],
-    },
-    {
-      id: 'tradein-suite',
-      number: '05',
-      name: 'CIRCULAR LAB & TRADE-IN',
-      bgTitle: 'CIRCULAR TECH',
-      tagline: 'Tukar gawai lama jadi uang tunai instan, hemat hingga 91% emisi karbon manufaktur.',
-      isAction: true,
-      ambientGlow: 'rgba(214, 244, 121, 0.16)',
-      accentColor: '#D6F479',
-      cards: [
-        {
-          title: 'Inspeksi Diagnostik 25-Titik',
-          specs: 'Motherboard, Display & Baterai',
-          priceTag: 'STANDAR LAB RESMI',
-          image: '/promo1.jpg',
-          gridArea: '3 / 8 / 8 / 11',
-          direction: 'right',
-          badge: '100% LOLOS UJI',
-        },
-        {
-          title: 'Garansi Komersial 1 Tahun',
-          specs: 'Perlindungan Hardware Penuh',
-          priceTag: 'ZERO DEDUCTIBLE',
-          image: '/hero.jpg',
-          gridArea: '1 / 5 / 5 / 7',
-          direction: 'bottom',
-          badge: 'TUKAR UNIT/REFUND',
-        },
-        {
-          title: 'Taksiran Tunai Trade-In',
-          specs: 'Gratis Kotak Pengiriman Aman',
-          priceTag: 'CASH OUT INSTAN',
-          image: '/promo2.jpg',
-          gridArea: '6 / 2 / 11 / 5',
-          direction: 'right',
-          badge: 'PENCAIRAN CEPAT',
-        },
-      ],
-    },
-  ];
 
   // Switch and animate active collection via ultra-smooth GPU-composited motion
   const activateCollection = (newIndex: number) => {
@@ -391,7 +380,7 @@ export function HoverGridShowcase() {
     }
   };
 
-  const activeCollection = collections[activeIndex];
+  const activeCollection = COLLECTIONS[activeIndex];
 
   return (
     <section
@@ -432,7 +421,7 @@ export function HoverGridShowcase() {
         {/* Left Column: Interactive Menu List */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-3">
           <div className="space-y-2.5">
-            {collections.map((col, idx) => {
+            {COLLECTIONS.map((col, idx) => {
               const isActive = activeIndex === idx;
 
               return (
@@ -518,7 +507,7 @@ export function HoverGridShowcase() {
           <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:20px_20px] opacity-40" />
 
           {/* Collections Content Containers */}
-          {collections.map((col, colIdx) => {
+          {COLLECTIONS.map((col, colIdx) => {
             const isVisible = activeIndex === colIdx;
 
             return (

@@ -5,8 +5,9 @@ import { ArrowRight, ShieldCheck, RefreshCcw, ThumbsUp, Wrench, Star, Plus } fro
 import { useModals } from '@/context/ModalContext';
 import { Input } from '@/components/ui/input';
 import { submitReview } from '@/app/actions';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { TestimonialsSection as MarqueeTestimonialsSection } from '@/components/ui/testimonials-with-marquee';
+import { scrollToLenis } from '@/lib/utils';
 
 export function PromoBanners() {
   const { setIsTradeInOpen, setPillarInfo, setActiveCategory } = useModals();
@@ -36,8 +37,7 @@ export function PromoBanners() {
       cta: 'VIEW BUNDLES',
       action: () => {
         setActiveCategory('MacBooks');
-        const el = document.getElementById('catalog-section');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        scrollToLenis('catalog-section', { offset: -70 });
       },
     },
     {

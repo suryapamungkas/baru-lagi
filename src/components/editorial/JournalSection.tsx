@@ -18,62 +18,62 @@ interface JournalStory {
   paragraphs: string[];
 }
 
+const STORIES: JournalStory[] = [
+  {
+    id: 'behind-the-craft',
+    title: 'Di Balik Laboratorium: Eksplorasi 25-Titik Diagnostik Standar Militer BaruLagi',
+    date: 'Oktober 2026',
+    readTime: '8 Menit Baca',
+    author: 'Luna Cress & Nur Hidayat Surya Pamungkas',
+    cover: '/journal_diagnostics.jpg',
+    coverAlt: 'Teknisi laboratorium berevolusi menguji logic board gawai di bawah mikroskop presisi dengan monitor diagnostik',
+    summary:
+      'Perjalanan mendalam ke dalam fasilitas diagnostik BaruLagi, tempat di mana setiap logic board, sensor optik, dan kapasitas baterai diaudit menggunakan instrumen presisi.',
+    quote: 'Gawai yang bertahan selama satu dekade adalah wujud teknologi paling ramah lingkungan yang bisa kita ciptakan.',
+    paragraphs: [
+      'Di BaruLagi, setiap gawai memulai kehidupannya kembali jauh sebelum dipajang di etalase katalog. Semuanya bermula di laboratorium diagnostik 25-titik: pengujian termal intensif pada chipset, verifikasi tegangan baterai sel lithium, audit responsivitas layar 120Hz ProMotion, hingga penghapusan data DoD-grade tanpa jejak.',
+      'Kami meyakini bahwa kemewahan sejati dalam teknologi terletak pada integritas dan kejujuran performa. Baterai yang kami loloskan selalu berada di atas kapasitas 85–94%, memastikan Anda mendapatkan daya tahan sepanjang hari layaknya gawai baru.',
+      'Setiap modul kamera dikalibrasi ulang terhadap toleransi distorsi optik dan zero dead pixel. Hasilnya adalah ketenangan pikiran penuh, didukung garansi komersial 1 tahun tanpa kompromi.',
+    ],
+  },
+  {
+    id: 'carbon-savings',
+    title: 'Menghitung Jejak Karbon: Mengapa Memilih Gawai Rekondisi Menghemat 91% Emisi CO2e',
+    date: 'September 2026',
+    readTime: '6 Menit Baca',
+    author: 'Dr. Aris Sudarmawan & Tim Sirkular BaruLagi',
+    cover: '/journal_carbon.jpg',
+    coverAlt: 'Komponen gawai terdisasimilasi secara sirkular dengan metrik pengurangan emisi karbon CO2e',
+    summary:
+      'Memproduksi satu laptop atau smartphone baru melepaskan hingga 80kg CO2e dan mengonsumsi ribuan liter air bersih. Mengapa sirkularitas gawai adalah solusi nyata bagi Indonesia.',
+    quote: 'Memproduksi satu smartphone baru menghabiskan hingga 80kg CO2e dan 12.000 liter air. Rekondisi memutus siklus pemborosan tersebut.',
+    paragraphs: [
+      'Lebih dari 80% total emisi karbon dari siklus hidup sebuah smartphone terjadi pada fase manufaktur dan penambangan mineral mentah (kobalt, litium, emas, tembaga). Ketika Anda membeli perangkat yang direkondisi secara profesional, Anda memotong 91% dari jejak emisi tersebut seketika.',
+      'Indonesia menghadapi tantangan limbah elektronik (e-waste) yang kian meningkat. Dengan memperpanjang masa hidup gawai hingga 4–6 tahun tambahan, BaruLagi telah mencegah ribuan kilogram logam berat beracun mencemari tanah dan ekosistem perairan.',
+      'Sirkularitas bukan tentang mengorbankan kualitas demi kepedulian lingkungan—ini adalah tentang menikmati kehebatan gawai kelas flagship dengan harga 40-70% lebih terjangkau sambil menjaga bumi.',
+    ],
+  },
+  {
+    id: 'metallurgy-titanium',
+    title: 'Material Abadi: Titanium Aerospace & Baja Bedah yang Dirancang Bertahan Lintas Dekade',
+    date: 'Agustus 2026',
+    readTime: '5 Menit Baca',
+    author: 'Bima Perkasa (Lead Hardware Engineer)',
+    cover: '/journal_titanium.jpg',
+    coverAlt: 'Bodi titanium Grade 5 dan sasis baja nirkarat smartphone flagship dengan presisi chamfer CNC',
+    summary:
+      'Kekuatan material bodi titanium Grade 5 dan stainless steel bedah. Mengapa sasis gawai flagship modern dirancang untuk diperbaiki dan diwariskan.',
+    quote: 'Ketangguhan titanium Grade 5 dan stainless steel bedah bukan sekadar estetika, melainkan arsitektur ketahanan sejati.',
+    paragraphs: [
+      'Gawai modern seperti MacBook Pro M2, iPhone 13 Pro, dan Apple Watch Ultra dibangun dengan material kelas dirgantara: titanium Grade 5 dan surgical stainless steel. Berbeda dengan polikarbonat murah, paduan logam ini memiliki ketahanan luar biasa terhadap korosi dan deformasi struktural.',
+      'Di laboratorium BaruLagi, bodi logam menjalani proses higienisasi ultrasonik dan penghalusan mikro untuk mengembalikan kilau aslinya tanpa menipiskan lapisan anodisasi pabrikan.',
+      'Hasilnya adalah gawai yang terasa solid, kokoh, dan berbobot di tangan—sebuah instrumen kerja dan kreativitas yang siap menemani ambisi Anda bertahun-tahun ke depan.',
+    ],
+  },
+];
+
 export function JournalSection() {
   const [activeStory, setActiveStory] = useState<JournalStory | null>(null);
-
-  const stories: JournalStory[] = [
-    {
-      id: 'behind-the-craft',
-      title: 'Di Balik Laboratorium: Eksplorasi 25-Titik Diagnostik Standar Militer BaruLagi',
-      date: 'Oktober 2026',
-      readTime: '8 Menit Baca',
-      author: 'Luna Cress & Nur Hidayat Surya Pamungkas',
-      cover: '/journal_diagnostics.jpg',
-      coverAlt: 'Teknisi laboratorium berevolusi menguji logic board gawai di bawah mikroskop presisi dengan monitor diagnostik',
-      summary:
-        'Perjalanan mendalam ke dalam fasilitas diagnostik BaruLagi, tempat di mana setiap logic board, sensor optik, dan kapasitas baterai diaudit menggunakan instrumen presisi.',
-      quote: 'Gawai yang bertahan selama satu dekade adalah wujud teknologi paling ramah lingkungan yang bisa kita ciptakan.',
-      paragraphs: [
-        'Di BaruLagi, setiap gawai memulai kehidupannya kembali jauh sebelum dipajang di etalase katalog. Semuanya bermula di laboratorium diagnostik 25-titik: pengujian termal intensif pada chipset, verifikasi tegangan baterai sel lithium, audit responsivitas layar 120Hz ProMotion, hingga penghapusan data DoD-grade tanpa jejak.',
-        'Kami meyakini bahwa kemewahan sejati dalam teknologi terletak pada integritas dan kejujuran performa. Baterai yang kami loloskan selalu berada di atas kapasitas 85–94%, memastikan Anda mendapatkan daya tahan sepanjang hari layaknya gawai baru.',
-        'Setiap modul kamera dikalibrasi ulang terhadap toleransi distorsi optik dan zero dead pixel. Hasilnya adalah ketenangan pikiran penuh, didukung garansi komersial 1 tahun tanpa kompromi.',
-      ],
-    },
-    {
-      id: 'carbon-savings',
-      title: 'Menghitung Jejak Karbon: Mengapa Memilih Gawai Rekondisi Menghemat 91% Emisi CO2e',
-      date: 'September 2026',
-      readTime: '6 Menit Baca',
-      author: 'Dr. Aris Sudarmawan & Tim Sirkular BaruLagi',
-      cover: '/journal_carbon.jpg',
-      coverAlt: 'Komponen gawai terdisasimilasi secara sirkular dengan metrik pengurangan emisi karbon CO2e',
-      summary:
-        'Memproduksi satu laptop atau smartphone baru melepaskan hingga 80kg CO2e dan mengonsumsi ribuan liter air bersih. Mengapa sirkularitas gawai adalah solusi nyata bagi Indonesia.',
-      quote: 'Memproduksi satu smartphone baru menghabiskan hingga 80kg CO2e dan 12.000 liter air. Rekondisi memutus siklus pemborosan tersebut.',
-      paragraphs: [
-        'Lebih dari 80% total emisi karbon dari siklus hidup sebuah smartphone terjadi pada fase manufaktur dan penambangan mineral mentah (kobalt, litium, emas, tembaga). Ketika Anda membeli perangkat yang direkondisi secara profesional, Anda memotong 91% dari jejak emisi tersebut seketika.',
-        'Indonesia menghadapi tantangan limbah elektronik (e-waste) yang kian meningkat. Dengan memperpanjang masa hidup gawai hingga 4–6 tahun tambahan, BaruLagi telah mencegah ribuan kilogram logam berat beracun mencemari tanah dan ekosistem perairan.',
-        'Sirkularitas bukan tentang mengorbankan kualitas demi kepedulian lingkungan—ini adalah tentang menikmati kehebatan gawai kelas flagship dengan harga 40-70% lebih terjangkau sambil menjaga bumi.',
-      ],
-    },
-    {
-      id: 'metallurgy-titanium',
-      title: 'Material Abadi: Titanium Aerospace & Baja Bedah yang Dirancang Bertahan Lintas Dekade',
-      date: 'Agustus 2026',
-      readTime: '5 Menit Baca',
-      author: 'Bima Perkasa (Lead Hardware Engineer)',
-      cover: '/journal_titanium.jpg',
-      coverAlt: 'Bodi titanium Grade 5 dan sasis baja nirkarat smartphone flagship dengan presisi chamfer CNC',
-      summary:
-        'Kekuatan material bodi titanium Grade 5 dan stainless steel bedah. Mengapa sasis gawai flagship modern dirancang untuk diperbaiki dan diwariskan.',
-      quote: 'Ketangguhan titanium Grade 5 dan stainless steel bedah bukan sekadar estetika, melainkan arsitektur ketahanan sejati.',
-      paragraphs: [
-        'Gawai modern seperti MacBook Pro M2, iPhone 13 Pro, dan Apple Watch Ultra dibangun dengan material kelas dirgantara: titanium Grade 5 dan surgical stainless steel. Berbeda dengan polikarbonat murah, paduan logam ini memiliki ketahanan luar biasa terhadap korosi dan deformasi struktural.',
-        'Di laboratorium BaruLagi, bodi logam menjalani proses higienisasi ultrasonik dan penghalusan mikro untuk mengembalikan kilau aslinya tanpa menipiskan lapisan anodisasi pabrikan.',
-        'Hasilnya adalah gawai yang terasa solid, kokoh, dan berbobot di tangan—sebuah instrumen kerja dan kreativitas yang siap menemani ambisi Anda bertahun-tahun ke depan.',
-      ],
-    },
-  ];
 
   return (
     <section id="journal-section" className="py-20 px-4 sm:px-8 lg:px-14 mx-auto max-w-7xl text-white select-none border-b border-white/10">
@@ -94,7 +94,7 @@ export function JournalSection() {
 
       {/* 3 Story Cards (Exact Isle Thorne Journal Grid) */}
       <ul className="grid-site gap-y-8">
-        {stories.map((story) => (
+        {STORIES.map((story) => (
           <li key={story.id} className="col-span-2 lg:col-span-4">
             <div
               onClick={() => setActiveStory(story)}

@@ -2,8 +2,9 @@
 
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowDown } from 'lucide-react';
+import { scrollToLenis } from '@/lib/utils';
 
 interface CinematicHeroSectionProps {
   id: string;
@@ -52,17 +53,7 @@ export function CinematicHeroSection({
 
   const scrollToNext = () => {
     if (nextSectionId) {
-      const el = document.getElementById(nextSectionId);
-      if (el) {
-        const customWin = window as unknown as {
-          __lenis?: { scrollTo: (target: HTMLElement | string, opts?: object) => void };
-        };
-        if (customWin.__lenis) {
-          customWin.__lenis.scrollTo(el, { offset: -70, duration: 1.2 });
-        } else {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
+      scrollToLenis(nextSectionId, { offset: -70, duration: 1.2 });
     }
   };
 

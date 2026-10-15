@@ -5,62 +5,54 @@ import { ProductData, useModals } from '@/context/ModalContext';
 import { CollectionHeading } from './CollectionHeading';
 import { ArrowCircle } from '@/components/ui/ArrowCircle';
 import { ShieldCheck, ChevronRight } from 'lucide-react';
-
-function safeParseImages(imagesJson?: string): string[] {
-  try {
-    return JSON.parse(imagesJson || '["/hero.jpg"]');
-  } catch {
-    return ['/hero.jpg'];
-  }
-}
+import { safeParseImages, scrollToLenis } from '@/lib/utils';
 
 interface CuratedCapsulesSectionProps {
   products: ProductData[];
 }
 
+// Curated 4 Capsules inspired directly by Isle Thorne Collections
+const CAPSULES = [
+  {
+    order: '01',
+    id: 'capsule-silicon',
+    name: 'LAPTOP & KOMPUTASI PRODUKTIF',
+    category: 'MacBooks',
+    materials: 'Bodi Aluminium Daur Ulang 100% • Layar Retina XDR 120Hz • Performa Apple Silicon',
+    productIds: ['mbp-14-m2', 'mba-15-m2'],
+  },
+  {
+    order: '02',
+    id: 'capsule-mobility',
+    name: 'SMARTPHONE & TABLET FLAGSHIP',
+    category: 'Smartphones',
+    materials: 'Bodi Titanium & Stainless Steel • Kamera Resolusi Tinggi • Layar Super Retina & AMOLED',
+    productIds: ['iphone-13-pro', 'samsung-s24-ultra', 'ipad-air-5'],
+  },
+  {
+    order: '03',
+    id: 'capsule-gaming-audio',
+    name: 'KONSOL GAMING & AUDIO HI-FI',
+    category: 'Consoles',
+    materials: 'Layar HDR OLED 90Hz • Active Noise Cancelling • Audio Spasial Resolusi Tinggi',
+    productIds: ['steam-deck-oled', 'switch-oled', 'ps5-disc', 'sony-wh1000xm5', 'airpods-pro-2'],
+  },
+  {
+    order: '04',
+    id: 'capsule-wearable',
+    name: 'SMARTWATCH & AKSESORIS',
+    category: 'Great deals',
+    materials: 'Bodi Titanium 49mm • Kaca Sapphire Crystal 3000 Nits • Sensor Kesehatan Lengkap',
+    productIds: ['apple-watch-ultra-2'],
+  },
+];
+
 export function CuratedCapsulesSection({ products }: CuratedCapsulesSectionProps) {
   const { setActiveCategory, setQuickViewProduct } = useModals();
 
-  // Curated 4 Capsules inspired directly by Isle Thorne Collections
-  const capsules = [
-    {
-      order: '01',
-      id: 'capsule-silicon',
-      name: 'LAPTOP & KOMPUTASI PRODUKTIF',
-      category: 'MacBooks',
-      materials: 'Bodi Aluminium Daur Ulang 100% • Layar Retina XDR 120Hz • Performa Apple Silicon',
-      productIds: ['mbp-14-m2', 'mba-15-m2'],
-    },
-    {
-      order: '02',
-      id: 'capsule-mobility',
-      name: 'SMARTPHONE & TABLET FLAGSHIP',
-      category: 'Smartphones',
-      materials: 'Bodi Titanium & Stainless Steel • Kamera Resolusi Tinggi • Layar Super Retina & AMOLED',
-      productIds: ['iphone-13-pro', 'samsung-s24-ultra', 'ipad-air-5'],
-    },
-    {
-      order: '03',
-      id: 'capsule-gaming-audio',
-      name: 'KONSOL GAMING & AUDIO HI-FI',
-      category: 'Consoles',
-      materials: 'Layar HDR OLED 90Hz • Active Noise Cancelling • Audio Spasial Resolusi Tinggi',
-      productIds: ['steam-deck-oled', 'switch-oled', 'ps5-disc', 'sony-wh1000xm5', 'airpods-pro-2'],
-    },
-    {
-      order: '04',
-      id: 'capsule-wearable',
-      name: 'SMARTWATCH & AKSESORIS',
-      category: 'Great deals',
-      materials: 'Bodi Titanium 49mm • Kaca Sapphire Crystal 3000 Nits • Sensor Kesehatan Lengkap',
-      productIds: ['apple-watch-ultra-2'],
-    },
-  ];
-
   const handleJumpToCategory = (cat: string) => {
     setActiveCategory(cat);
-    const el = document.getElementById('catalog-section');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    scrollToLenis('catalog-section', { offset: -70 });
   };
 
   return (
@@ -82,7 +74,7 @@ export function CuratedCapsulesSection({ products }: CuratedCapsulesSectionProps
 
       {/* 4 Numbered Capsules (Isle Thorne Collection Pattern) */}
       <div className="space-y-16">
-        {capsules.map((cap) => {
+        {CAPSULES.map((cap) => {
           // Match products in this capsule
           const matchingProds = products.filter(
             (p) => cap.productIds.includes(p.id) || p.category === cap.category

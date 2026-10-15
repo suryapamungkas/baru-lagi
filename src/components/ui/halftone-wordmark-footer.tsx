@@ -13,6 +13,7 @@
 // is fetched: the faces come from the host page or the fallback stacks.
 
 import * as React from "react";
+import { scrollToLenis } from "@/lib/utils";
 
 export interface HalftonePalette {
   /** The footer background. */
@@ -470,12 +471,7 @@ export default function HalftoneWordmarkFooter({
   }, [key]);
 
   const toTop = () => {
-    const customWin = typeof window !== "undefined" ? (window as unknown as { __lenis?: { scrollTo: (target: number, opts?: { duration?: number }) => void } }) : null;
-    if (customWin?.__lenis) {
-      customWin.__lenis.scrollTo(0, { duration: 1.2 });
-    } else if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    scrollToLenis(0, { duration: 1.2 });
   };
 
   return (

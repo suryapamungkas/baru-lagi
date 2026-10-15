@@ -3,6 +3,7 @@
 import { ArrowRight } from 'lucide-react';
 import { TiltedGridHero, type TiltedGridImage } from '@/components/ui/tilted-grid-hero';
 import { useModals } from '@/context/ModalContext';
+import { scrollToLenis } from '@/lib/utils';
 
 // Real catalog photography from /public, so every tile is a device we sell.
 const ARCHIVE_IMAGES: TiltedGridImage[] = [
@@ -24,17 +25,7 @@ export function TiltedArchiveSection() {
 
   const openCatalog = () => {
     setActiveCategory('All');
-    const el = document.getElementById('catalog-section');
-    if (el) {
-      const customWin = window as unknown as {
-        __lenis?: { scrollTo: (target: HTMLElement | string, opts?: object) => void };
-      };
-      if (customWin.__lenis) {
-        customWin.__lenis.scrollTo(el, { offset: -70, duration: 1.2 });
-      } else {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+    scrollToLenis('catalog-section', { offset: -70, duration: 1.2 });
   };
 
   return (

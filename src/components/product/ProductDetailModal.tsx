@@ -6,22 +6,7 @@ import { X, ShieldCheck, Check, Star, RefreshCw, ShoppingCart, Zap, ChevronDown,
 import { useModals } from '@/context/ModalContext';
 import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/button';
-
-function safeParseImages(imagesJson?: string): string[] {
-  try {
-    return JSON.parse(imagesJson || '["/hero.jpg"]');
-  } catch {
-    return ['/hero.jpg'];
-  }
-}
-
-function safeParseSpecs(specsJson?: string): Record<string, string> {
-  try {
-    return JSON.parse(specsJson || '{}');
-  } catch {
-    return {};
-  }
-}
+import { safeParseImages, safeParseSpecs } from '@/lib/utils';
 
 export function ProductDetailModal() {
   const { quickViewProduct, setQuickViewProduct } = useModals();

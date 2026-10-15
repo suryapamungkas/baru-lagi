@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { Search, ShoppingCart, User, Menu, X, RefreshCw, MapPin, ChevronDown } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useModals } from '@/context/ModalContext';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { BaruLagiLogo } from '@/components/ui/BaruLagiLogo';
+import { scrollToLenis } from '@/lib/utils';
 
 export function MarketplaceHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -312,12 +313,7 @@ export function MarketplaceHeader() {
                   showTagline
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    const globalWindow = window as unknown as { __lenis?: { scrollTo: (target: number | string) => void } };
-                    if (globalWindow?.__lenis) {
-                      globalWindow.__lenis.scrollTo(0);
-                    } else {
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
+                    scrollToLenis(0);
                   }}
                 />
                 <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-white/70 hover:text-white">

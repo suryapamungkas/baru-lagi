@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { scrollToLenis } from '@/lib/utils';
 
 interface BaruLagiLogoProps {
   className?: string;
@@ -19,13 +20,8 @@ export function BaruLagiLogo({
     e.preventDefault();
     if (onClick) {
       onClick();
-    } else if (typeof window !== 'undefined') {
-      const globalWindow = window as unknown as { __lenis?: { scrollTo: (target: number | string, options?: Record<string, unknown>) => void } };
-      if (globalWindow.__lenis) {
-        globalWindow.__lenis.scrollTo(0);
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+    } else {
+      scrollToLenis(0);
     }
   };
 

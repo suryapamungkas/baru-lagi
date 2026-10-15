@@ -5,23 +5,8 @@ import Image from 'next/image';
 import { Star, ShoppingCart, Eye, Sparkles, Search, X } from 'lucide-react';
 import { useModals, ProductData } from '@/context/ModalContext';
 import { useCart } from '@/context/CartContext';
-import { motion } from 'framer-motion';
-
-function safeParseImages(imagesJson?: string): string[] {
-  try {
-    return JSON.parse(imagesJson || '["/hero.jpg"]');
-  } catch {
-    return ['/hero.jpg'];
-  }
-}
-
-function safeParseSpecs(specsJson?: string): Record<string, string> {
-  try {
-    return JSON.parse(specsJson || '{}');
-  } catch {
-    return {};
-  }
-}
+import { motion } from 'motion/react';
+import { safeParseImages, safeParseSpecs } from '@/lib/utils';
 
 interface ProductsViewProps {
   initialProducts: ProductData[];
