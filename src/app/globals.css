@@ -50,6 +50,9 @@
   --color-accent-lime: var(--accent-lime);
   --color-surface-gray: var(--surface-gray);
   --color-border-gray: var(--border-gray);
+
+  --max-w-container: 1280px;
+  --animate-marquee: marquee var(--duration, 40s) linear infinite;
 }
 
 :root {
@@ -185,6 +188,24 @@
   }
   .scroll-row > * {
     scroll-snap-align: start;
+  }
+
+  /* Seamless Marquee Animation */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap, 1rem)));
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee var(--duration, 40s) linear infinite;
+  }
+
+  .group:hover .group-hover\:\[animation-play-state\:paused\] {
+    animation-play-state: paused;
   }
 }
 

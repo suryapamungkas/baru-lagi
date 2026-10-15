@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import { ArrowRight, ShieldCheck, RefreshCcw, ThumbsUp, Wrench, ChevronLeft, ChevronRight, Star, Plus } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, ShieldCheck, RefreshCcw, ThumbsUp, Wrench, Star, Plus } from 'lucide-react';
 import { useModals } from '@/context/ModalContext';
 import { Input } from '@/components/ui/input';
 import { submitReview } from '@/app/actions';
 import { motion } from 'framer-motion';
+import { TestimonialsSection as MarqueeTestimonialsSection } from '@/components/ui/testimonials-with-marquee';
 
 export function PromoBanners() {
   const { setIsTradeInOpen, setPillarInfo, setActiveCategory } = useModals();
@@ -185,21 +186,24 @@ export interface TestimonialsProps {
   }[];
 }
 
+const AVATAR_POOL = [
+  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80',
+];
+
 export function TestimonialsSection({ initialReviews }: TestimonialsProps) {
-  const carouselRef = useRef<HTMLDivElement>(null);
   const [reviews, setReviews] = useState(initialReviews);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [reviewerName, setReviewerName] = useState('');
   const [reviewerRating, setReviewerRating] = useState(5);
   const [reviewerComment, setReviewerComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (carouselRef.current) {
-      const scrollAmount = direction === 'left' ? -350 : 350;
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
 
   const handleAddReview = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -238,97 +242,67 @@ export function TestimonialsSection({ initialReviews }: TestimonialsProps) {
     setReviewerComment('');
   };
 
-  return (
-    <section id="reviews-section" className="py-24 px-6 md:px-12 lg:px-20 mx-auto max-w-7xl bg-black text-white overflow-hidden">
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#A0A0A0] block mb-2 font-mono">
-            VERIFIED CUSTOMER FEEDBACK
-          </span>
-          <h2 className="font-black text-3xl sm:text-5xl uppercase tracking-[0.08em] text-white">
-            REAL REVIEWS &bull; REAL BUYERS
-          </h2>
-          <p className="text-xs text-[#A0A0A0] mt-2 font-mono">
-            OVER 500,000+ CUSTOMERS BUYING CIRCULAR ELECTRONICS
-          </p>
-        </div>
+  const testimonialItems = reviews.map((rev, idx) => {
+    const handle = `@${rev.userName.toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
+    const avatar = AVATAR_POOL[idx % AVATAR_POOL.length];
+    const condition =
+      rev.inventory?.condition === 'Good'
+        ? 'Kondisi Prima'
+        : rev.inventory?.condition === 'Excellent'
+        ? 'Kondisi Sempurna'
+        : rev.inventory?.condition || 'Grade A';
 
-        <div className="flex items-center gap-3">
+    return {
+      author: {
+        name: rev.userName,
+        handle,
+        avatar,
+        product: rev.inventory?.product?.name || 'Unit Terverifikasi',
+        condition,
+      },
+      text: rev.comment,
+      rating: rev.rating || 5,
+    };
+  });
+
+  return (
+    <section id="reviews-section" className="relative bg-black text-white">
+      <MarqueeTestimonialsSection
+        title="ULASAN NYATA PEMILIK UNIT"
+        description="Pengalaman langsung dari para profesional, kreator, dan gamer yang mengandalkan perangkat bersertifikasi kami setiap hari."
+        kicker="PENGALAMAN PENGGUNA TERVERIFIKASI"
+        testimonials={testimonialItems}
+        action={
           <button
+            type="button"
             onClick={() => setIsReviewModalOpen(true)}
-            className="border border-white px-5 py-2.5 text-xs font-mono font-bold uppercase tracking-wider text-white hover:bg-white hover:text-black transition-all flex items-center gap-1.5"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 bg-white/5 hover:bg-accent-lime hover:text-black hover:border-accent-lime text-xs font-mono font-bold uppercase tracking-wider text-white transition-all cursor-pointer shadow-lg hover:shadow-accent-lime/20"
           >
             <Plus className="h-3.5 w-3.5" />
-            WRITE A REVIEW
+            <span>Tulis Ulasan</span>
           </button>
-
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => scroll('left')}
-              className="p-2.5 rounded-full border border-white/20 hover:border-white text-white hover:bg-white/10 transition-colors"
-              aria-label="Previous review"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              className="p-2.5 rounded-full border border-white/20 hover:border-white text-white hover:bg-white/10 transition-colors"
-              aria-label="Next review"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Carousel */}
-      <div
-        ref={carouselRef}
-        className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 scrollbar-hide scroll-smooth"
-      >
-        {reviews.map((rev) => (
-          <div
-            key={rev.id}
-            className="w-80 sm:w-96 shrink-0 snap-start border border-white/10 bg-white/5 p-7 rounded-2xl flex flex-col justify-between shadow-xl"
-          >
-            <div>
-              <div className="flex gap-1 mb-4 text-accent-lime">
-                {[...Array(rev.rating)].map((_, i) => (
-                  <Star key={i} className="h-3.5 w-3.5 fill-accent-lime text-accent-lime" />
-                ))}
-              </div>
-              <p className="text-sm text-gray-200 mb-6 leading-relaxed font-mono italic">
-                &ldquo;{rev.comment}&rdquo;
-              </p>
-            </div>
-
-            <div className="pt-4 border-t border-white/10">
-              <p className="font-black text-sm uppercase tracking-wider text-white flex items-center gap-2">
-                <span>{rev.userName}</span>
-                <span className="text-[9px] font-mono bg-white/10 text-accent-lime font-bold px-1.5 py-0.5 rounded">
-                  VERIFIED
-                </span>
-              </p>
-              <p className="text-xs text-[#A0A0A0] font-mono mt-1">
-                {rev.inventory.product.name} &bull; {rev.inventory.condition}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
+        }
+      />
 
       {/* Review Modal */}
       {isReviewModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/85 backdrop-blur-md" onClick={() => setIsReviewModalOpen(false)} />
-          <div className="relative bg-black border border-white/20 w-full max-w-md rounded-2xl p-7 shadow-2xl z-10 text-white">
-            <h3 className="font-black text-lg uppercase tracking-wider mb-4">POST HARDWARE REVIEW</h3>
+          <div
+            className="absolute inset-0 bg-black/85 backdrop-blur-md"
+            onClick={() => setIsReviewModalOpen(false)}
+          />
+          <div className="relative bg-neutral-950 border border-white/20 w-full max-w-md rounded-2xl p-7 shadow-2xl z-10 text-white">
+            <h3 className="font-black text-lg uppercase tracking-wider mb-4">
+              BAGIKAN PENGALAMAN PENGGUNAAN
+            </h3>
             <form onSubmit={handleAddReview} className="space-y-4 font-mono text-xs">
               <div>
-                <label className="text-gray-400 block mb-1 uppercase tracking-wider">YOUR NAME</label>
+                <label className="text-gray-400 block mb-1 uppercase tracking-wider">
+                  NAMA LENGKAP
+                </label>
                 <Input
                   required
-                  placeholder="e.g. Liam Foster"
+                  placeholder="Contoh: Kevin Pratama"
                   value={reviewerName}
                   onChange={(e) => setReviewerName(e.target.value)}
                   className="bg-white/5 border-white/20 text-white text-xs h-10"
@@ -336,27 +310,35 @@ export function TestimonialsSection({ initialReviews }: TestimonialsProps) {
               </div>
 
               <div>
-                <label className="text-gray-400 block mb-1 uppercase tracking-wider">RATING</label>
+                <label className="text-gray-400 block mb-1 uppercase tracking-wider">
+                  PENILAIAN UNIT
+                </label>
                 <div className="flex gap-2">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
                       key={star}
                       type="button"
                       onClick={() => setReviewerRating(star)}
-                      className="p-1 text-accent-lime"
+                      className="p-1 text-accent-lime cursor-pointer"
                     >
-                      <Star className={`h-5 w-5 ${star <= reviewerRating ? 'fill-accent-lime' : 'text-white/20'}`} />
+                      <Star
+                        className={`h-5 w-5 ${
+                          star <= reviewerRating ? 'fill-accent-lime' : 'text-white/20'
+                        }`}
+                      />
                     </button>
                   ))}
                 </div>
               </div>
 
               <div>
-                <label className="text-gray-400 block mb-1 uppercase tracking-wider">REVIEW COMMENT</label>
+                <label className="text-gray-400 block mb-1 uppercase tracking-wider">
+                  CATATAN PENGGUNAAN & KONDISI FISIK
+                </label>
                 <textarea
                   required
                   rows={3}
-                  placeholder="Battery health, physical condition, and performance..."
+                  placeholder="Ceritakan performa baterai, kemulusan bodi, dan fungsi perangkat yang Anda terima..."
                   value={reviewerComment}
                   onChange={(e) => setReviewerComment(e.target.value)}
                   className="w-full p-3 rounded-lg bg-white/5 border border-white/20 text-white text-xs focus:outline-none focus:border-white"
@@ -367,16 +349,16 @@ export function TestimonialsSection({ initialReviews }: TestimonialsProps) {
                 <button
                   type="button"
                   onClick={() => setIsReviewModalOpen(false)}
-                  className="border border-white/20 px-4 py-2 uppercase tracking-wider text-white hover:border-white"
+                  className="border border-white/20 px-4 py-2 uppercase tracking-wider text-white hover:border-white text-xs font-mono cursor-pointer"
                 >
-                  CANCEL
+                  BATAL
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="border border-white bg-white text-black font-black px-5 py-2 uppercase tracking-wider hover:bg-black hover:text-white transition-all"
+                  className="border border-accent-lime bg-accent-lime text-black font-black px-5 py-2 uppercase tracking-wider hover:bg-white hover:border-white hover:text-black transition-all text-xs font-mono cursor-pointer"
                 >
-                  {isSubmitting ? 'SUBMITTING...' : 'POST REVIEW'}
+                  {isSubmitting ? 'MENYIMPAN...' : 'KIRIM ULASAN'}
                 </button>
               </div>
             </form>
