@@ -24,19 +24,19 @@ export function ManifestoSection() {
   ];
 
   return (
-    <section id="manifesto-section" className="py-20 px-4 sm:px-8 lg:px-14 mx-auto max-w-7xl text-white select-none border-b border-white/10">
+    <section id="manifesto-section" className="py-20 px-4 sm:px-8 lg:px-14 mx-auto max-w-7xl text-white select-none border-b border-white/10 scroll-mt-20">
       {/* Editorial Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16 pb-6 border-b border-white/10">
         <div>
           <span className="text-xs font-mono font-bold tracking-[0.25em] uppercase text-accent-lime block mb-2">
-            MANIFESTO &bull; ISLE THORNE ABOUT HERITAGE
+            TENTANG KAMI &bull; STANDAR BARU LAGI
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white">
-            TENTANG KOLEKTIF BARULAGI
+            MISI &amp; NILAI UTAMA KAMI
           </h2>
         </div>
         <p className="text-xs sm:text-sm font-mono text-[#A0A0A0] max-w-md text-left md:text-right">
-          Didirikan oleh Nur Hidayat Surya Pamungkas untuk membebaskan konsumen Indonesia dari limbah teknologi cepat saji.
+          Menghadirkan perangkat berkualitas tinggi dengan harga rasional, resmi, dan bertanggung jawab terhadap lingkungan.
         </p>
       </div>
 
@@ -44,7 +44,7 @@ export function ManifestoSection() {
         {/* Card 1: Our Story & Philosophy (Isle Thorne grid-site layout) */}
         <div className="itc-card grid-site p-8 sm:p-12 border border-white/10 bg-neutral-950 rounded-2xl items-start">
           <div className="lg:col-span-3 text-xs font-mono text-[#A0A0A0] uppercase tracking-widest pb-4 lg:pb-0">
-            [ VISI & MANIFESTO ]
+            [ TENTANG BARULAGI ]
           </div>
           <div className="col-span-2 lg:col-span-8 lg:col-start-4 space-y-4 text-xs sm:text-sm font-mono leading-relaxed text-[#D0D0D0]">
             <p>

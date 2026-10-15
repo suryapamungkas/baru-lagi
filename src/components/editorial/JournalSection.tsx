@@ -81,14 +81,14 @@ export function JournalSection() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16 pb-6 border-b border-white/10">
         <div>
           <span className="text-xs font-mono font-bold tracking-[0.25em] uppercase text-accent-lime block mb-2">
-            JURNAL & RISET SIRKULAR &bull; ISLE THORNE STORIES
+            PANDUAN &amp; ARTIKEL &bull; RISET KUALITAS
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white">
-            CATATAN TEKNOLOGI & SIRKULARITAS
+            STANDAR KUALITAS &amp; DAMPAK LINGKUNGAN
           </h2>
         </div>
         <p className="text-xs sm:text-sm font-mono text-[#A0A0A0] max-w-md text-left md:text-right">
-          Eksplorasi mendalam seputar ilmu rekondisi hardware, audit pengujian laboratorium, dan dampak pengurangan emisi elektronik.
+          Pelajari proses inspeksi 25 titik laboratorium kami, standar penggantian baterai, dan penghematan emisi dengan memilih gawai rekondisi.
         </p>
       </div>
 

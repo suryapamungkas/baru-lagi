@@ -413,13 +413,13 @@ export function GridLayoutMotionShowcase() {
         <div>
           <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-accent-lime flex items-center gap-2 mb-2">
             <Sparkles className="h-3.5 w-3.5 text-accent-lime" />
-            03 // ARSIP GAWAI IKONIK &bull; RETRO-EDITORIAL MOTION
+            SOROTAN PRODUK &bull; PILIHAN POPULER
           </span>
           <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-[0.06em] text-white">
-            MASTERPIECE VAULT
+            PRODUK PALING DIMINATI
           </h2>
           <p className="text-xs sm:text-sm text-[#A0A0A0] mt-2 font-mono max-w-2xl leading-relaxed">
-            Eksplorasi gawai legendaris dengan interaksi paralaks multi-lapis. Sentuh kartu untuk memisahkan tipografi &amp; bayangan, klik untuk membuka ledakan preview kurator.
+            Daftar perangkat favorit dengan ulasan kepuasan tertinggi. Klik kartu produk untuk melihat detail spesifikasi, grade kondisi, dan penawaran harga.
           </p>
         </div>
 

@@ -53,25 +53,25 @@ export function TiltedArchiveSection() {
         <div className="relative z-30 flex h-full flex-col items-center justify-between py-16 sm:py-20 md:py-24 text-center pointer-events-none">
           <div className="px-6">
             <span className="block text-[10px] sm:text-xs font-mono font-bold tracking-[0.25em] uppercase text-accent-lime mb-3">
-              ARSIP BERGERAK &bull; 11 UNIT TERKURASI
+              UNIT REKONDISI RESMI &bull; READY STOCK
             </span>
             <h2 className="text-balance text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white">
-              Setiap gawai,
+              Kualitas seperti baru,
               <br />
-              kembali ke performa puncak.
+              harga jauh lebih hemat.
             </h2>
           </div>
 
           <div className="flex flex-col items-center gap-5 px-6">
             <p className="max-w-md text-balance text-xs sm:text-sm font-mono text-[#A0A0A0]">
-              Dari meja lab diagnostik ke tangan Anda. Lolos uji 25 titik, bergaransi 1 tahun.
+              Tiap unit telah melalui inspeksi ketat 25 titik laboratorium dan dilindungi garansi resmi 1 tahun.
             </p>
             <button
               type="button"
               onClick={openCatalog}
               className="pointer-events-auto group inline-flex items-center gap-2 border border-white px-7 py-3.5 text-xs font-mono font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-lime active:scale-95"
             >
-              Lihat Katalog
+              Lihat Semua Unit
               <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>

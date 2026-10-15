@@ -104,13 +104,13 @@ export function MarketplacePageClient({
           ]}
         />
 
-        {/* TILTED GRID HERO: CURVED ARCHIVE REEL OF CATALOG DEVICES */}
+        {/* TILTED GRID HERO: CURVED PRODUCT REEL */}
         <TiltedArchiveSection />
 
-        {/* CURATED CAPSULES: ISLE THORNE COLLECTIVE NUMBERED ARCHIVE */}
+        {/* KOLEKSI PERANGKAT: 4 KATEGORI UTAMA */}
         <CuratedCapsulesSection products={initialProducts} />
 
-        {/* HOVER GRID SHOWCASE: EKOSISTEM & KURASI PILIHAN (Metalab/Codrops Multi-Image Reveal) */}
+        {/* REKOMENDASI PERANGKAT: EKOSISTEM INTERAKTIF */}
         <HoverGridShowcase />
 
         {/* MARKETPLACE HARDWARE CATALOG */}
@@ -119,16 +119,16 @@ export function MarketplacePageClient({
         {/* PROMO CARDS (Student Discounts, Bundles, Lab Standards) */}
         <PromoBanners />
 
-        {/* GRID LAYOUT MOTION SHOWCASE: MASTERPIECE VAULT (Multi-Plane 3D Tilt & Exploding Overlay Preview) */}
+        {/* SPOTLIGHT PERANGKAT UNGGULAN: INTERACTIVE PREVIEW */}
         <GridLayoutMotionShowcase />
 
         {/* TRUST PILLARS (1-Year Warranty, 30-Day Returns, 25-Point Lab Inspection, Free Shipping) */}
         <TrustPromise />
 
-        {/* EDITORIAL CIRCULAR JOURNAL: IN-DEPTH STORIES & ESSAYS */}
+        {/* PANDUAN & ARTIKEL EDUKASI */}
         <JournalSection />
 
-        {/* BRAND MANIFESTO & LAB COLLABORATIONS */}
+        {/* TENTANG BARULAGI: MISI & NILAI UTAMA */}
         <ManifestoSection />
 
         {/* REAL REVIEWS CAROUSEL & WRITE A REVIEW */}

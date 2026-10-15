@@ -404,13 +404,13 @@ export function HoverGridShowcase() {
         <div>
           <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-accent-lime flex items-center gap-2 mb-2">
             <Sparkles className="h-3.5 w-3.5 text-accent-lime" />
-            02 // KURASI EKOSISTEM &amp; SERI UNGGULAN
+            REKOMENDASI PERANGKAT &bull; KOMBINASI TERBAIK
           </span>
           <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-[0.06em] text-white">
-            PILIH SUITE PERANGKAT IMPIAN
+            KOMBINASI PERANGKAT KERJA &amp; HIBURAN
           </h2>
           <p className="text-xs sm:text-sm text-[#A0A0A0] mt-2 font-mono max-w-2xl">
-            Arahkan kursor pada seri kurasi untuk menyaksikan komposisi gawai rekondisi bersertifikasi lab 25 titik dengan garansi 1 tahun tanpa syarat.
+            Arahkan kursor pada kategori untuk melihat paduan perangkat yang saling terintegrasi—dengan jaminan baterai prima dan garansi resmi 1 tahun.
           </p>
         </div>
 

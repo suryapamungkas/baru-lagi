@@ -26,33 +26,33 @@ export function CuratedCapsulesSection({ products }: CuratedCapsulesSectionProps
     {
       order: '01',
       id: 'capsule-silicon',
-      name: 'APPLE SILICON & STUDIO COMPUTING',
+      name: 'LAPTOP & KOMPUTASI PRODUKTIF',
       category: 'MacBooks',
-      materials: 'Bodi Aluminium Daur Ulang 100% • Liquid Retina XDR 120Hz • Apple Silicon SoC',
+      materials: 'Bodi Aluminium Daur Ulang 100% • Layar Retina XDR 120Hz • Performa Apple Silicon',
       productIds: ['mbp-14-m2', 'mba-15-m2'],
     },
     {
       order: '02',
       id: 'capsule-mobility',
-      name: 'PRO MOBILITY & CINEMATIC SENSORS',
+      name: 'SMARTPHONE & TABLET FLAGSHIP',
       category: 'Smartphones',
-      materials: 'Baja Bedah Nirkarat • Bodi Titanium Aerospace • Sensor 200MP & Ceramic Shield',
+      materials: 'Bodi Titanium & Stainless Steel • Kamera Resolusi Tinggi • Layar Super Retina & AMOLED',
       productIds: ['iphone-13-pro', 'samsung-s24-ultra', 'ipad-air-5'],
     },
     {
       order: '03',
       id: 'capsule-gaming-audio',
-      name: 'HYBRID GAMING & ACOUSTIC ENGINEERING',
+      name: 'KONSOL GAMING & AUDIO HI-FI',
       category: 'Consoles',
-      materials: 'Panel 90Hz HDR OLED • Driver Karbon 30mm • APU 6nm AMD Custom • Audio Spasial',
+      materials: 'Layar HDR OLED 90Hz • Active Noise Cancelling • Audio Spasial Resolusi Tinggi',
       productIds: ['steam-deck-oled', 'switch-oled', 'ps5-disc', 'sony-wh1000xm5', 'airpods-pro-2'],
     },
     {
       order: '04',
       id: 'capsule-wearable',
-      name: 'EXTREME WEARABLE & CIRCLUAR LAB',
+      name: 'SMARTWATCH & AKSESORIS',
       category: 'Great deals',
-      materials: 'Bodi Titanium Aerospace 49mm • Layar Sapphire Crystal 3000 Nits • Dual GPS',
+      materials: 'Bodi Titanium 49mm • Kaca Sapphire Crystal 3000 Nits • Sensor Kesehatan Lengkap',
       productIds: ['apple-watch-ultra-2'],
     },
   ];
@@ -69,14 +69,14 @@ export function CuratedCapsulesSection({ products }: CuratedCapsulesSectionProps
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16 pb-6 border-b border-white/10">
         <div>
           <span className="text-xs font-mono font-bold tracking-[0.25em] uppercase text-accent-lime block mb-2">
-            KURASI KOLEKTIF &bull; ISLE THORNE ARCHIVE
+            KATEGORI PILIHAN &bull; 4 LINI PRODUK
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white">
-            KOLEKSI RESMI DENGAN STANDAR DIAGNOSTIK
+            PILIHAN PERANGKAT SESUAI KEBUTUHAN ANDA
           </h2>
         </div>
         <p className="text-xs sm:text-sm font-mono text-[#A0A0A0] max-w-md text-left md:text-right">
-          Setiap unit diuji dalam 4 kurasi kapsul hardware. Dipulihkan menggunakan suku cadang OEM dan higienisasi laboratorium.
+          Dikelompokkan berdasarkan fungsi kerja dan hiburan. Semua unit telah dibersihkan menyeluruh dan lolos uji fungsi 100%.
         </p>
       </div>
 
@@ -179,10 +179,10 @@ export function CuratedCapsulesSection({ products }: CuratedCapsulesSectionProps
         <div className="absolute inset-x-8 top-1/2 -translate-y-1/2 flex items-center justify-between text-white">
           <div>
             <span className="text-xs font-mono font-bold tracking-[0.25em] text-accent-lime uppercase block mb-2">
-              ARSIP SIRKULAR LENGKAP
+              KATALOG LENGKAP &bull; SEMUA GAWAI
             </span>
             <h3 className="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight">
-              JELAJAHI SELURUH KATALOG GAWAI
+              JELAJAHI SEMUA PERANGKAT TERSEDIA
             </h3>
           </div>
           <ArrowCircle tone="lime" size={48} className="hidden sm:block" />

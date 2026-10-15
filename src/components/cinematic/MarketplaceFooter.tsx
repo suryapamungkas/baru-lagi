@@ -101,8 +101,8 @@ export function MarketplaceFooter() {
       title: 'Studio',
       links: [
         {
-          label: 'Manifesto Sirkular',
-          href: '#manifesto',
+          label: 'Tentang Kami',
+          href: '#manifesto-section',
         },
         {
           label: 'Surya Pamungkas',

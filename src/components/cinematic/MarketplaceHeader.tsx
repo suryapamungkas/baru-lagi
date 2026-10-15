@@ -140,12 +140,12 @@ export function MarketplaceHeader() {
                 }}
                 className="text-white/80 hover:text-white transition-colors cursor-pointer py-1"
               >
-                KAPSUL
+                KOLEKSI
               </button>
               <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-accent-lime transition-all duration-300 ease-out group-hover:w-full" />
             </div>
 
-            {/* Ecosystem Showcase Link */}
+            {/* Recommendations / Ecosystem Link */}
             <div className="relative group py-2">
               <button
                 type="button"
@@ -155,12 +155,12 @@ export function MarketplaceHeader() {
                 }}
                 className="text-white/80 hover:text-white transition-colors cursor-pointer py-1"
               >
-                EKOSISTEM
+                REKOMENDASI
               </button>
               <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full" />
             </div>
 
-            {/* Vault Link */}
+            {/* Popular Spotlight Link */}
             <div className="relative group py-2">
               <button
                 type="button"
@@ -170,12 +170,12 @@ export function MarketplaceHeader() {
                 }}
                 className="text-white/80 hover:text-white transition-colors cursor-pointer py-1"
               >
-                VAULT
+                UNGGULAN
               </button>
               <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full" />
             </div>
 
-            {/* Journal Link */}
+            {/* Articles / Guide Link */}
             <div className="relative group py-2">
               <button
                 type="button"
@@ -185,12 +185,12 @@ export function MarketplaceHeader() {
                 }}
                 className="text-white/80 hover:text-white transition-colors cursor-pointer py-1"
               >
-                JURNAL
+                ARTIKEL
               </button>
               <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-accent-lime transition-all duration-300 ease-out group-hover:w-full" />
             </div>
 
-            {/* Manifesto Link */}
+            {/* About Us Link */}
             <div className="relative group py-2">
               <button
                 type="button"
@@ -200,7 +200,7 @@ export function MarketplaceHeader() {
                 }}
                 className="text-white/80 hover:text-white transition-colors cursor-pointer py-1"
               >
-                MANIFESTO
+                TENTANG KAMI
               </button>
               <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-accent-lime transition-all duration-300 ease-out group-hover:w-full" />
             </div>
@@ -344,7 +344,7 @@ export function MarketplaceHeader() {
                   }}
                   className="block text-xl font-black uppercase tracking-[0.2em] text-accent-lime hover:text-white text-left transition-colors"
                 >
-                  &rarr; KAPSUL KURASI
+                  &rarr; KOLEKSI PRODUK
                 </button>
 
                 <button
@@ -355,7 +355,7 @@ export function MarketplaceHeader() {
                   }}
                   className="block text-xl font-black uppercase tracking-[0.2em] text-white/80 hover:text-white text-left transition-colors"
                 >
-                  EKOSISTEM PILIHAN
+                  REKOMENDASI PERANGKAT
                 </button>
 
                 <button
@@ -366,7 +366,7 @@ export function MarketplaceHeader() {
                   }}
                   className="block text-xl font-black uppercase tracking-[0.2em] text-white/80 hover:text-white text-left transition-colors"
                 >
-                  MASTERPIECE VAULT
+                  PRODUK UNGGULAN
                 </button>
 
                 <button
@@ -377,7 +377,7 @@ export function MarketplaceHeader() {
                   }}
                   className="block text-xl font-black uppercase tracking-[0.2em] text-white/80 hover:text-white text-left transition-colors"
                 >
-                  JURNAL SIRKULAR
+                  ARTIKEL &amp; PANDUAN
                 </button>
 
                 <button
@@ -388,7 +388,7 @@ export function MarketplaceHeader() {
                   }}
                   className="block text-xl font-black uppercase tracking-[0.2em] text-white/80 hover:text-white text-left transition-colors"
                 >
-                  MANIFESTO KOLEKTIF
+                  TENTANG KAMI
                 </button>
 
                 <button
